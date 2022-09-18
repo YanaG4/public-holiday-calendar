@@ -1,0 +1,88 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.rbc-today {
+  background-color:hsl(213, 100%, 90%);
+}
+.rbc-event {
+  background-color: #456ec7;
+  min-height: 20px;
+  height: auto;
+  overflow: visible;
+  white-space: normal;
+}
+.rbc-agenda-date-cell {
+  background-color: white;
+}
+.rbc-agenda-table thead th:nth-child(2),
+.rbc-agenda-table .rbc-agenda-time-cell,
+.rbc-btn-group:last-of-type button:nth-child(2),
+.rbc-btn-group:last-of-type button:nth-child(3),
+.rbc-time-content,
+.rbc-label.rbc-time-header-gutter
+{
+  display: none;
+  visibility: hidden;
+}
+.rbc-time-view .rbc-event-content{
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  padding-left: 10px;
+  font-size: .95rem !important;
+}
+
+.rbc-row-segment .rbc-event-content{
+  font-size: .85rem;
+}
+
+.rbc-header {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.rbc-toolbar .rbc-toolbar-label {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.rbc-off-range-bg{
+  background-color: rgb(230, 230, 237);
+}
+
+.rbc-toolbar button {
+  background-color: #2C66AE;
+  border: none;
+  margin: 5px;
+  color: white;
+  font-size: .95rem;
+}
+.rbc-btn-group > button:first-child:not(:last-child){
+  margin-left: 0;
+}
+.rbc-btn-group > button:last-child:not(:first-child) {
+  margin-right: 0;
+}
+
+.rbc-toolbar button:active, 
+.rbc-toolbar button.rbc-active{
+  background-color: #599beb; 
+  color: white;
+}
+.rbc-toolbar button:active:hover, 
+.rbc-toolbar button:active:focus, 
+.rbc-toolbar button.rbc-active:hover, 
+.rbc-toolbar button.rbc-active:focus {
+  background-color: #599beb;
+  color: white;
+}
+.rbc-toolbar button:hover,
+.rbc-toolbar button:active,
+.rbc-toolbar button:focus
+ {
+  background-color: #599beb;
+  color: white;
+}
+.rbc-agenda-event-cell{
+  color: white;
+}
