@@ -1,5 +1,14 @@
 @import 'react-big-calendar/lib/sass/styles';
 
+.calendar-container {
+  height: 800px;
+  min-height: 600px;
+  width: 95vw;
+  max-width: 1200px;
+  margin-top: 200px;  
+  color: #3C5B82;
+}
+
 .rbc-today {
   background-color:hsl(213, 100%, 90%);
 }
@@ -52,10 +61,12 @@
 
 .rbc-toolbar button {
   background-color: #2C66AE;
+  border-radius: 12px;
   border: none;
   margin: 5px;
   color: white;
-  font-size: .95rem;
+  font-size: 1rem;
+  padding: 8px 16px;
 }
 .rbc-btn-group > button:first-child:not(:last-child){
   margin-left: 0;
@@ -85,4 +96,7 @@
 }
 .rbc-agenda-event-cell{
   color: white;
+}
+.rbc-button-link {
+  font-size: 1rem;
 }

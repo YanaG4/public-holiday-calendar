@@ -1,6 +1,6 @@
 .header-container{
     width: 100%;
-    height: 535px;
+    height: 450px;
     background: url(../img/background-image.jpg) no-repeat;
     background-size: cover;
     background-position: center;
@@ -8,20 +8,20 @@
 .header-image-darker{
     background-color: rgb(0, 0, 0, .55);
     width: 100%;
-    height: 535px;
+    height: 450px;
 }
 .header-text{
     font-size: 1.3rem;
     color: white;
     padding: 5px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
-    font-weight: 500;
+    font-weight: 400;
 }
 .header-main-text{
-    font-size: 2.67rem;
+    font-size: 2.64rem;
     font-weight: 500;
 }
 .text-container{
     text-align: center;
-    padding-top: 50px;
+    padding-top: 66px;
 }

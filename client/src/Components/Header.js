@@ -6,7 +6,7 @@ export default function Header() {
         <div className='header-container'>
             <div className='header-image-darker'>
                 <div className='text-container'>
-                    <div className='header-text header-main-text'>Public Holiday Calendar</div>
+                    <h1 className='header-text header-main-text'>Public Holiday Calendar</h1>
                     <div className='header-text'>Be aware of the work schedule around the world!</div>
                 </div>
 

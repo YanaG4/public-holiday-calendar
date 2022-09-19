@@ -210,7 +210,7 @@ const localizer = dateFnsLocalizer({
 function App() {
     return (
         <>
-            <div className='container'>
+            <div className='calendar-container'>
                 <Calendar
                     localizer={localizer}
                     events={events}
