@@ -1,6 +1,25 @@
-.subscription-container{
+.subscription-gradient{
+    z-index: -1;
+    position: relative;
+    top: -190px;
     width: 100%;
     height: 500px;
     background: #18306F;
     background: linear-gradient(311.7deg, #18306F -8.87%, #3C94E4 94.25%);
+}
+.subscription-container {   
+    position: relative;
+    color:white;
+    max-width: 800px;
+    width: 85vw;
+    padding-top: 40px;
+}
+.text-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.text-header h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
 }

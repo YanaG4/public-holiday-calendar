@@ -1,8 +1,9 @@
 @import 'react-big-calendar/lib/sass/styles';
 
 .calendar-container {
-  height: 800px;
+  height: 815px;
   min-height: 600px;
+  overflow-y: auto;
   width: 95vw;
   max-width: 1200px;
   margin-top: 200px;  
@@ -99,4 +100,23 @@
 }
 .rbc-button-link {
   font-size: 1rem;
+}
+
+.rbc-row-content {
+  overflow-y: auto;
+}
+.rbc-show-more {
+  font-size: .9rem;
+}
+.rbc-button-link:focus {
+  border-radius: 50%;
+  min-width: 25px;
+  min-height: 25px;
+  color: white;
+  background-color: #599beb;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.rbc-show-more:focus {
+  border-radius: 5px;
 }

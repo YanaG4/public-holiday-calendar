@@ -47,11 +47,51 @@
   font-size: 1.1rem;
   align-self: flex-end;
 }
+.small-container button:focus,
+.small-container button:hover
+{
+  background-color: #599beb
+}
+.small-container button:active
+{
+  background-color: white;
+  outline: 2px solid #599beb;
+  color: #599beb;
+}
 input {
   width: 100%;
   height: 60px;
   border-radius: 15px;
-  border: 2px solid #2C66AE80;
+  border: 2px solid #2C66AE70;
   outline: none;
   padding-left: 15px;
+}
+input:focus,
+input:hover {
+  border: .149rem solid #599beb;
+}
+
+body ::-webkit-scrollbar {
+  width: 10px;
+}
+
+body ::-webkit-scrollbar-thumb {
+  background: #2C66AE; 
+  border-radius: 100px;
+  border: 3px white solid;
+  background-clip: padding-box;
+}
+
+body ::-webkit-scrollbar-thumb:hover
+ {
+  background: #599beb; 
+}
+button:focus {
+  outline: none;
+  border: none;
+}
+.underline {
+  width: 577px;
+  height: 4px;
+  background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
 }
