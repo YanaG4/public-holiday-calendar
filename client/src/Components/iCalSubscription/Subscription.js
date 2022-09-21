@@ -11,9 +11,17 @@ export default function Subscription() {
             </div>
             <div className='links-container'>
                 <p>Subscribe to the public holidays feed on your Outlook Calendar with this link:</p>
-                <div></div>
+                <div className='link-container'>https://www.holidays.int.kn/ics/germany,estonia</div>
                 <p>Or you can add them separately*</p>
-                <div></div>
+                <div className='link-container'>
+                    https://www.holidays.int.kn/ics/estonia
+                    <br />
+                    https://www.holidays.int.kn/ics/germany
+                    <br />
+                    https://www.holidays.int.kn/ics/estonia
+                    <br />
+                    https://www.holidays.int.kn/ics/germany
+                </div>
                 <p className='warning-text'>* Adding them separately means that you can toggle them on and off individually.</p>
             </div>
         </div>

@@ -1,0 +1,95 @@
+.instruction-main-container {
+    margin: 50px 0 100px 0;
+    width: 95vw;
+    max-width: 1200px;
+    filter: drop-shadow(0px 4px 15px #1F4384);
+    border-radius: 0px 0px 10px 10px;
+}
+.instruction-container {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0 10px 0;
+}
+.instruction-main-container button {
+    border: none;
+    outline:  none;
+    font-size: 1rem;
+    background: #28A8EA;
+    border-radius: 10px 40px 0px 0px;
+    position: relative;
+    left: -10px;
+    bottom: -9px;
+    min-width: 200px;
+    height: 50px;
+    color: white;
+}
+.instruction-main-container button:first-of-type {
+    background: #FFFFFF;
+    color: #29608F;
+    border-radius: 10px 40px 0px 0px;
+    min-width: 300px;
+    height: 70px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    left: 0;
+    bottom: 0;
+    z-index: 100; 
+    padding-left: 145px;
+    padding-right: 25px;
+}
+.button-container {
+    position: relative;
+}
+.instruction-container .underline {
+    background: radial-gradient(50% 50% at 50% 50%, #3C5B82 0%, rgba(60, 91, 130, 0) 100%);
+}
+.button-container img {
+    width: auto;
+    height: 105px;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+}
+.instruction-text {
+    max-width: 800px;
+    width: 85vw;
+    padding: 30px 0 60px 0;
+}
+.instruction-container h3 {   
+    color: #3C5B82;
+}
+
+
+.instruction-text table {
+    color: #3C5B82;
+    font-size: 1.1rem;
+}
+.instruction-text table, .instruction-text th, .instruction-text td { 
+    vertical-align: top;
+    padding-left: 10px;
+  }
+  .instruction-text tr > td:first-child {
+    padding: 0;
+  }
+  .instruction-text tr td:first-child p {
+    background-color: #3888D7;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .instruction-text table img{
+    padding: 40px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }

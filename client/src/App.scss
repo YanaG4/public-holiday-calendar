@@ -92,6 +92,13 @@ button:focus {
 }
 .underline {
   width: 577px;
-  height: 4px;
+  height: 3px;
   background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+margin-bottom: 30px;
+}
+p {
+  font-size: 1.18rem;
+}
+button {
+  cursor: pointer;
 }

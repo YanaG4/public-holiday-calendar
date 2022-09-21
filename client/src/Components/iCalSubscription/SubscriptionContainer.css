@@ -1,18 +1,26 @@
+.subscription-section {   
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
 .subscription-gradient{
     z-index: -1;
-    position: relative;
-    top: -190px;
+    position: absolute;
+    top: -50px;
     width: 100%;
-    height: 500px;
+    height: 3500px;
     background: #18306F;
     background: linear-gradient(311.7deg, #18306F -8.87%, #3C94E4 94.25%);
 }
 .subscription-container {   
-    position: relative;
+    
     color:white;
     max-width: 800px;
     width: 85vw;
-    padding-top: 40px;
+    padding: 40px 0;
 }
 .text-header {
     display: flex;
@@ -22,4 +30,9 @@
 .text-header h3 {
     font-size: 1.25rem;
     font-weight: 500;
+    padding: 30px 0;
+}
+.warning-text {
+    font-size: .95rem;
+    font-weight: 300;
 }
