@@ -4,23 +4,30 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
+    padding-bottom: 200px;
 }
 .subscription-gradient{
     z-index: -1;
     position: absolute;
-    top: -50px;
+    top: -330px;
     width: 100%;
     height: 3500px;
     background: #18306F;
     background: linear-gradient(311.7deg, #18306F -8.87%, #3C94E4 94.25%);
 }
-.subscription-container {   
-    
+.subscription-decoration {
+    height: 328px;
+    background-image: url("../../img/background-shape-1.png");
+    background-repeat: repeat-x; 
+    background-position: center;
+} 
+
+.subscription-container {     
     color:white;
     max-width: 800px;
     width: 85vw;
-    padding: 40px 0;
+    padding: 30px 0 40px 0;
 }
 .text-header {
     display: flex;

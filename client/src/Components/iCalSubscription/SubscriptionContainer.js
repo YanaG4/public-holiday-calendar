@@ -11,7 +11,9 @@ export default function SubscriptionContainer() {
                 <Subscription />
             </div>
             <Instruction />
-            <div className='subscription-gradient'> </div>
+            <div className='subscription-gradient'>
+                <div className='subscription-decoration'></div>
+            </div>
         </section>
     )
 }
