@@ -1,18 +1,21 @@
 .subscription-section {   
     position: relative;
+    top: -300px;
+    padding-top: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
     padding-bottom: 200px;
+    margin-bottom: -300px;
 }
 .subscription-gradient{
     z-index: -1;
     position: absolute;
-    top: -330px;
+    top: -0;
     width: 100%;
-    height: 3500px;
+    height: 3900px;
     background: #18306F;
     background: linear-gradient(311.7deg, #18306F -8.87%, #3C94E4 94.25%);
 }

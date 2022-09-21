@@ -1,10 +1,9 @@
 .footer {
     position: absolute;
-    bottom: -90px;
+    bottom: 0;
     font-size: 3rem;
     z-index: -1;
     width: 100%;
-    
 
 }
 
@@ -23,7 +22,7 @@
 .footer-background > div {
     width: 95vw;
     max-width: 1200px;
-    padding-top: 300px;
+    padding-top: 365px;
 }
 .footer-background img {
     width: 230px;
