@@ -8,8 +8,7 @@ import Chip from "@mui/material/Chip";
 import { countries } from '../stores/Countries'
 
 
-export default function CountryInput() {
-    const [country, setCountry] = useState([])
+export default function CountryInput({ setCountries }) {
     const [allCcountries, setAllCountries] = useState(countries)
     useEffect(() => {
         const countriesWithColors = countries.map(country => {
@@ -18,9 +17,7 @@ export default function CountryInput() {
         })
         setAllCountries(countriesWithColors)
     }, [])
-    useEffect(() => {
-        console.log(country);
-    }, [country])
+
 
     function countryNameToColour(countryName) {
         let hash = 0;
@@ -66,7 +63,7 @@ export default function CountryInput() {
                 multiple
                 limitTags={6}
                 id="tags-filled"
-                onChange={(event, value) => setCountry(value)}
+                onChange={(event, value) => setCountries(value)}
                 sx={{ width: "100%" }}
                 options={allCcountries}
                 autoHighlight
