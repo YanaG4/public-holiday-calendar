@@ -5,7 +5,7 @@ export default function Subscription() {
     return (
         <div>
             <div className='text-header'>
-                <i class="fa fa-envelope"></i>
+                <i className="fa fa-envelope"></i>
                 <h3>Subscribe with Outlook</h3>
                 <div className='underline underline-white'></div>
             </div>

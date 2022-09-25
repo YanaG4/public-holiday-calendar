@@ -2,4 +2,16 @@
     position: absolute;
     top: 263px;
     z-index: 50;
+    height: auto;
+    min-height: 300px;
+}
+.country-input input {
+    border: none;
+    outline: none;
+}
+.country-container .small-container-header{
+    margin-bottom: 15px;
+}
+.country-container .main-button{
+    margin-top: 15px;
 }
