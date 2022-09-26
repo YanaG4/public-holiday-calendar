@@ -5,9 +5,10 @@ import isEmail from 'validator/lib/isEmail';
 export default function AlertsContainer({ countries }) {
     const [errorMessage, setErrorMessage] = useState(null);
     const emailInput = useRef(null)
+
     function subscribeHandler() {
         const email = emailInput.current.value
-        if (email == '') {
+        if (email === '') {
             setErrorMessage('Please enter an email')
             return
         }
@@ -17,6 +18,7 @@ export default function AlertsContainer({ countries }) {
                 return
             }
             else {
+                sendReminderSubscription(email)
                 emailInput.current.value = ''
                 setErrorMessage(null)
             }
@@ -25,6 +27,12 @@ export default function AlertsContainer({ countries }) {
         else {
             setErrorMessage('Please enter a valid email')
         }
+    }
+    function sendReminderSubscription(email) {
+        //send axios request
+        //if success => animate button
+        //else error-alert? +email != ''
+
     }
 
     return (

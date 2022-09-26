@@ -6,6 +6,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { countries } from '../stores/Countries'
+import { colors } from '../stores/Colors'
 
 
 export default function CountryInput({ setCountries }) {
@@ -21,15 +22,15 @@ export default function CountryInput({ setCountries }) {
 
     function countryNameToColour(countryName) {
         let hash = 0;
+
+        if (countryName.length === 0)
+            return hash;
         for (let i = 0; i < countryName.length; i++) {
             hash = countryName.charCodeAt(i) + ((hash << 5) - hash);
+            hash = hash & hash;
         }
-        let colour = '#';
-        for (let i = 0; i < 3; i++) {
-            let value = (hash >> (i * 8)) & 0xFF;
-            colour += ('00' + value.toString(16)).substr(-2);
-        }
-        return colour;
+        hash = ((hash % colors.length) + colors.length) % colors.length;
+        return colors[hash];
     }
 
 

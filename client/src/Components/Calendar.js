@@ -223,7 +223,7 @@ function MyCalendar({ countries }) {
                     localizer={localizer}
                     events={events}
                     eventPropGetter={(events) => {
-                        const backgroundColor = events.country == 'Estonia' ? '#FF7F50' : '#8A2BE2';
+                        const backgroundColor = events.country === 'Estonia' ? '#FF7F50' : '#8A2BE2';
                         return { style: { backgroundColor } }
                     }}
                 />

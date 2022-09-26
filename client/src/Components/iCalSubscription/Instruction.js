@@ -19,7 +19,7 @@ export default function Instruction() {
         <section className='instruction-main-container'>
             <div className='button-container'>
                 <button onClick={changeOutlookVersion}>
-                    <img src={outlookVesrion === "Office 365" ? Outlook365Image : Outlook2013Image} />{outlookVesrion}</button>
+                    <img src={outlookVesrion === "Office 365" ? Outlook365Image : Outlook2013Image} alt="" />{outlookVesrion}</button>
                 <button onClick={changeOutlookVersion}>{outlookVesrion === "Office 365" ? "Outlook 2013" : "Office 365"}</button>
             </div>
             <div className='instruction-container'>
