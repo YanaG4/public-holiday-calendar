@@ -10,6 +10,7 @@ import SubscriptionContainer from './Components/iCalSubscription/SubscriptionCon
 function App() {
   const [chosenCountries, setChosenCountries] = useState([])
 
+
   useEffect(() => {
     console.log(chosenCountries);
   }, [chosenCountries])
@@ -24,8 +25,10 @@ function App() {
       <CountryContainer
         setCountries={setCountriesHandler}
       />
-      <Calendar />
-      <AlertsContainer />
+      <Calendar
+        countries={chosenCountries} />
+      <AlertsContainer
+        countries={chosenCountries} />
       <SubscriptionContainer />
       <Footer />
     </div>

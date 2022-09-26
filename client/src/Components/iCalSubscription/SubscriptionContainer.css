@@ -20,7 +20,7 @@
     background: linear-gradient(311.7deg, #18306F -8.87%, #3C94E4 94.25%);
 }
 .subscription-decoration {
-    height: 328px;
+    height: 327px;
     background-image: url("../../img/background-shape-1.png");
     background-repeat: repeat-x; 
     background-position: center;
@@ -41,8 +41,4 @@
     font-size: 1.25rem;
     font-weight: 500;
     padding: 30px 0;
-}
-.warning-text {
-    font-size: .95rem;
-    font-weight: 300;
 }

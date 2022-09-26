@@ -32,6 +32,7 @@ export default function CountryInput({ setCountries }) {
         return colour;
     }
 
+
     const theme = createTheme({
         components: {
             MuiOutlinedInput: {
@@ -97,10 +98,16 @@ export default function CountryInput({ setCountries }) {
                     <TextField
                         {...params}
                         placeholder="Choose a country"
+                        sx={{
+                            "& .MuiInputBase-root": {
+                                color: 'rgba(44, 102, 174)',
+                            }
+                        }}
                         inputProps={{
                             ...params.inputProps,
                             autoComplete: 'off',
                         }}
+
                     />
                 )}
             />

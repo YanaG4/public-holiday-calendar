@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import format from 'date-fns/format'
@@ -8,7 +9,7 @@ import enUS from 'date-fns/locale/en-US'
 import './Calendar.scss'
 
 const now = new Date()
-const events = [
+const events2 = [
     {
         id: 0,
         title: '9 12 All Day Event very long title',
@@ -207,7 +208,14 @@ const localizer = dateFnsLocalizer({
     locales,
 })
 
-function App() {
+function MyCalendar({ countries }) {
+    const [events, setEvents] = useState(events2)
+
+    useEffect(() => {
+        //fetch events for countries
+        //setEvents
+    }, [countries])
+
     return (
         <>
             <div className='calendar-container'>
@@ -224,4 +232,4 @@ function App() {
     );
 }
 
-export default App;
+export default MyCalendar;
