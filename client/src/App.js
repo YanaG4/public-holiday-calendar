@@ -29,7 +29,8 @@ function App() {
         countries={chosenCountries} />
       <AlertsContainer
         countries={chosenCountries} />
-      <SubscriptionContainer />
+      <SubscriptionContainer
+        countries={chosenCountries} />
       <Footer />
     </div>
   );

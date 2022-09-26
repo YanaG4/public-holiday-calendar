@@ -16,3 +16,6 @@
 .link-container:last-of-type {
     margin-bottom: 14px;
 }
+.link-container li {
+    list-style: none;
+}
