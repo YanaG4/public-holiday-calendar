@@ -37,9 +37,9 @@ export default function Subscription({ countries }) {
             </div>
             <div className='links-container'>
                 <p>Subscribe to the public holidays feed on your Outlook Calendar with this link:</p>
-                <div className='link-container'>{link}</div>
+                <div className={(countries.length < 1) ? 'link-container link-container-inactive' : 'link-container'}>{link}</div>
                 <p>Or you can add them separately*</p>
-                <div className='link-container'>
+                <div className={(countries.length <= 1) ? 'link-container link-container-inactive' : 'link-container'}>
                     {
                         separateLinks.map((link) => (
                             <li key={link}>{link}</li>

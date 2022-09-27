@@ -19,3 +19,7 @@
 .link-container li {
     list-style: none;
 }
+.link-container-inactive {
+    color: rgb(46, 72, 103, .6);
+    user-select: none;
+}
