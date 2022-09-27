@@ -13,11 +13,11 @@ export default function CountryInput({ setCountries, chosenCountries }) {
     const [allCcountries, setAllCountries] = useState(countries)
     useEffect(() => {
         const countriesWithColors = countries.map(country => {
-            country.color = countryNameToColour(country.label)
+            country.color = countryNameToColour(country.commonName)
             return country
         })
         setAllCountries(countriesWithColors)
-        console.log(chosenCountries);
+        //console.log(chosenCountries);
     }, [])
 
 
@@ -71,25 +71,25 @@ export default function CountryInput({ setCountries, chosenCountries }) {
                 options={allCcountries}
                 value={chosenCountries || null}
                 autoHighlight
-                isOptionEqualToValue={(option, value) => option.code === value.code}
+                isOptionEqualToValue={(option, value) => option.isoAlpha2Code === value.isoAlpha2Code}
                 filterSelectedOptions
-                getOptionLabel={(option) => option.label || ""}
+                getOptionLabel={(option) => option.commonName || ""}
                 renderOption={(props, option) => (
                     <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                         <img
                             loading="lazy"
                             width="20"
-                            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-                            srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+                            src={`https://flagcdn.com/w20/${option.isoAlpha2Code.toLowerCase()}.png`}
+                            srcSet={`https://flagcdn.com/w40/${option.isoAlpha2Code.toLowerCase()}.png 2x`}
                             alt=""
                         />
-                        {option.label} ({option.code})
+                        {option.commonName} ({option.isoAlpha2Code})
                     </Box>
                 )}
                 renderTags={(value, getTagProps) =>
                     value.map((option, index) => (
                         <Chip
-                            label={option.label}
+                            label={option.commonName}
                             style={{
                                 backgroundColor: option.color,
                                 color: "#FFF"

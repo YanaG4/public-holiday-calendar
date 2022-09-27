@@ -7,15 +7,16 @@ import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import './Calendar.scss'
+import { holidays } from '../stores/Holidays'
 
 const now = new Date()
 const events2 = [
     {
-        id: 0,
-        title: '9 12 All Day Event very long title',
+        id: 1,
+        title: 'hi 9 12 All Day Event very long title',
         allDay: true,
-        start: new Date(2022, 8, 12),
-        end: new Date(2022, 8, 13),
+        start: new Date(2022, 8, 27),
+        end: new Date(2022, 8, 28),
         color: 'pink'
     },
     {
@@ -209,11 +210,43 @@ const localizer = dateFnsLocalizer({
 })
 
 function MyCalendar({ countries }) {
-    const [events, setEvents] = useState(events2)
+    const [events, setEvents] = useState([])
 
     useEffect(() => {
+        if (countries.length === 0) {
+            setEvents([])
+            return
+        }
+
         //fetch events for countries
-        //setEvents
+
+        let filteredEvents = []
+        countries.forEach(country => {
+            const event = holidays.find(holiday => holiday.country == country.isoAlpha2Code)
+            if (event)
+                filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.country == country.isoAlpha2Code)]
+        });
+
+        if (filteredEvents.length === 0) {
+            setEvents([])
+            return
+        }
+        const eventDataSuitedForCalendar = filteredEvents.map(event => {
+            const country = countries.find(country => country.isoAlpha2Code === event.country)
+
+
+            event.color = country.color
+            event.id = event.holidayId
+            event.title = country.commonName + ": " + event.name
+            event.allDay = true
+            event.start = new Date(event.date)
+            // let endDate = new Date(event.date)
+            // endDate.setDate(endDate.getDate() + 1)
+            event.end = new Date(event.date)
+            return event
+        })
+        setEvents(eventDataSuitedForCalendar)
+
     }, [countries])
 
     return (
@@ -223,7 +256,7 @@ function MyCalendar({ countries }) {
                     localizer={localizer}
                     events={events}
                     eventPropGetter={(events) => {
-                        const backgroundColor = events.country === 'Estonia' ? '#FF7F50' : '#8A2BE2';
+                        const backgroundColor = events.color ? events.color : '#8A2BE2';
                         return { style: { backgroundColor } }
                     }}
                 />

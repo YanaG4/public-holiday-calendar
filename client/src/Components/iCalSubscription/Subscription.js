@@ -17,15 +17,15 @@ export default function Subscription({ countries }) {
     }, [countries])
 
     function getSubscriptionLink() {
-        setLink(SUBCRIPTION_ENDPOINT + countries[0].code)
+        setLink(SUBCRIPTION_ENDPOINT + countries[0].isoAlpha2Code)
         if (countries.length === 1) {
             setSeparateLinks(['Choose more than one country to get separate links'])
             return
         }
-        setSeparateLinks([SUBCRIPTION_ENDPOINT + countries[0].code])
+        setSeparateLinks([SUBCRIPTION_ENDPOINT + countries[0].isoAlpha2Code])
         for (let i = 1; i < countries.length; i++) {
-            setSeparateLinks(prevState => [...prevState, SUBCRIPTION_ENDPOINT + countries[i].code])
-            setLink(prevState => prevState + ',' + countries[i].code)
+            setSeparateLinks(prevState => [...prevState, SUBCRIPTION_ENDPOINT + countries[i].isoAlpha2Code])
+            setLink(prevState => prevState + ',' + countries[i].isoAlpha2Code)
         }
     }
     return (
