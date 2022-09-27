@@ -74,18 +74,35 @@ input:hover {
   border: .149rem solid #599beb;
 }
 
-body ::-webkit-scrollbar {
-  width: 10px;
+ ::-webkit-scrollbar {
+  width: 15px;
+  background-color: #cbe2ff;
 }
 
-body ::-webkit-scrollbar-thumb {
+ ::-webkit-scrollbar-thumb {
+  background: #2C66AE; 
+  border-radius: 100px;
+  border: 3px #b7d6fc solid;
+  background-clip: padding-box;
+}
+
+ ::-webkit-scrollbar-thumb:hover
+ {
+  background: #599beb; 
+}
+body ::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
+}
+
+ body ::-webkit-scrollbar-thumb {
   background: #2C66AE; 
   border-radius: 100px;
   border: 3px white solid;
   background-clip: padding-box;
 }
 
-body ::-webkit-scrollbar-thumb:hover
+ body ::-webkit-scrollbar-thumb:hover
  {
   background: #599beb; 
 }
