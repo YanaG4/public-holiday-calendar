@@ -8,11 +8,14 @@ import Header from './Components/Header';
 import SubscriptionContainer from './Components/iCalSubscription/SubscriptionContainer'
 
 function App() {
-  const [chosenCountries, setChosenCountries] = useState([])
+  const [chosenCountries, setChosenCountries] = useState(() => {
+    const savedCountries = JSON.parse(localStorage.getItem('chosenCountries'))
+    return savedCountries || []
+  })
 
 
   useEffect(() => {
-    console.log(chosenCountries);
+    localStorage.setItem("chosenCountries", JSON.stringify(chosenCountries))
   }, [chosenCountries])
 
   function setCountriesHandler(countries) {
@@ -24,6 +27,7 @@ function App() {
       <Header />
       <CountryContainer
         setCountries={setCountriesHandler}
+        chosenCountries={chosenCountries}
       />
       <Calendar
         countries={chosenCountries} />

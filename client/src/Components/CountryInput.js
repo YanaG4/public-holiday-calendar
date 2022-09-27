@@ -9,7 +9,7 @@ import { countries } from '../stores/Countries'
 import { colors } from '../stores/Colors'
 
 
-export default function CountryInput({ setCountries }) {
+export default function CountryInput({ setCountries, chosenCountries }) {
     const [allCcountries, setAllCountries] = useState(countries)
     useEffect(() => {
         const countriesWithColors = countries.map(country => {
@@ -17,6 +17,7 @@ export default function CountryInput({ setCountries }) {
             return country
         })
         setAllCountries(countriesWithColors)
+        console.log(chosenCountries);
     }, [])
 
 
@@ -68,7 +69,9 @@ export default function CountryInput({ setCountries }) {
                 onChange={(event, value) => setCountries(value)}
                 sx={{ width: "100%" }}
                 options={allCcountries}
+                value={chosenCountries || null}
                 autoHighlight
+                isOptionEqualToValue={(option, value) => option.code === value.code}
                 filterSelectedOptions
                 getOptionLabel={(option) => option.label || ""}
                 renderOption={(props, option) => (
