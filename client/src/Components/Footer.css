@@ -11,8 +11,8 @@
     max-width: 100%;
     width: 100vw;
     min-height: 600px;
-    background-image : url(".././img/Vector 1.png");
-    background-repeat: repeat-x;   
+    background-image : url(".././img/Vector 1.svg");
+    /* background-repeat: repeat-x;    */
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -27,4 +27,11 @@
 .footer-background img {
     width: 230px;
     height:auto;
+}
+
+@media only screen and (max-width: 390px) {
+    .footer-background img {
+        width: 180px;
+        height:auto;
+    }
 }

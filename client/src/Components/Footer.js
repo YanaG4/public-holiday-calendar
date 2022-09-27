@@ -7,7 +7,7 @@ export default function Footer() {
 
             <div className='footer-background'>
                 <div>
-                    <img src={require(".././img/logo.png")} alt="" />
+                    <img src={require(".././img/logo.svg").default} alt="" />
                 </div>
             </div>
         </div>

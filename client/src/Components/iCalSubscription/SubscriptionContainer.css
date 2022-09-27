@@ -1,6 +1,6 @@
 .subscription-section {   
     position: relative;
-    top: -300px;
+    top: -310px;
     padding-top: 300px;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
     width: 100%;
     overflow: hidden;
     padding-bottom: 200px;
-    margin-bottom: -300px;
+    margin-bottom: -310px;
 }
 .subscription-gradient{
     z-index: -1;
@@ -20,10 +20,7 @@
     background: linear-gradient(311.7deg, #18306F -8.87%, #3C94E4 94.25%);
 }
 .subscription-decoration {
-    height: 327px;
-    background-image: url("../../img/background-shape-1.png");
-    background-repeat: repeat-x; 
-    background-position: center;
+    position: relative;
 } 
 
 .subscription-container {     
@@ -41,4 +38,28 @@
     font-size: 1.25rem;
     font-weight: 500;
     padding: 30px 0;
+}
+
+
+
+
+.wave-container {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave-container svg {
+    position: relative;
+    display: block;
+    width: calc(125% + 1.3px);
+    height: 303px;
+}
+
+.wave-container .shape-fill {
+    fill: #FFFFFF;
 }
