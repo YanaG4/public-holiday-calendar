@@ -37,9 +37,9 @@ function MyCalendar({ countries }) {
 
         let filteredEvents = []
         countries.forEach(country => {
-            const event = holidays.find(holiday => holiday.country == country.isoAlpha2Code)
+            const event = holidays.find(holiday => holiday.country === country.isoAlpha2Code)
             if (event)
-                filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.country == country.isoAlpha2Code)]
+                filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.country === country.isoAlpha2Code)]
         });
 
         if (filteredEvents.length === 0) {

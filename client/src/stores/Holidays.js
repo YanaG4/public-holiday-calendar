@@ -11,7 +11,7 @@ export const holidays = [
     {
         holidayId: 0,
         name: "New Year!!!",
-        date: "2022-09-27",
+        date: "2022-09-26",
         provider: {},
         country: "AD", //alpha2code
         regional: true,
@@ -20,7 +20,7 @@ export const holidays = [
     {
         holidayId: 0,
         name: "New Year!!!",
-        date: "2022-09-27",
+        date: "2022-09-25",
         provider: {},
         country: "DE", //alpha2code
         regional: true,
