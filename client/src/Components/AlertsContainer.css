@@ -12,3 +12,86 @@
 .small-container-input input {
     padding-right: 20px;
 }
+
+.alerts-container .main-button::after {
+    content: 'Subscribe';
+}
+.main-button-await {
+    align-self: flex-end;
+    margin-right: 47px;
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    border: 5px solid rgb(207, 215, 223);
+    border-radius: 50%;
+    font-size: 0;
+    border-left-color: hsl(213, 78%, 64%);  
+    animation: rotating 2s 0.25s linear infinite;
+}
+.main-button-await::after{
+    content:"";
+}
+.small-container .main-button-await:hover, 
+.small-container .main-button-await:focus,
+.small-container .main-button-await:active
+{
+    background-color: white;
+    border: 5px solid rgb(207, 215, 223);
+    border-radius: 50%;
+    border-left-color: hsl(213, 78%, 64%);  
+}
+
+@keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .small-container .main-button-success {
+    max-width: 127px;
+    width: 30%;
+    border-radius: 15px;
+    color: white;
+    padding: 11px 20px;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    align-self: flex-end;
+    background-color: #599beb;
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+    .main-button-success::after {  
+      font-family:'FontAwesome';   
+      content:"\f00c";
+}
+.small-container .main-button-error {
+    max-width: 127px;
+    width: 30%;
+    border-radius: 15px;
+    color: white;
+    padding: 11px 20px;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    align-self: flex-end;
+    background-color: rgb(247, 44, 65);
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+    .main-button-error::after {  
+      font-family:'FontAwesome';   
+      content:"\f00d";
+}
+.small-container .main-button-error:hover, 
+.small-container .main-button-error:focus,
+.small-container .main-button-error:active
+{
+    color: white;
+    background-color: rgb(247, 44, 65);
+}
