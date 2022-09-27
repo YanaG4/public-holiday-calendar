@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import format from 'date-fns/format'
@@ -8,6 +9,7 @@ import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import './Calendar.scss'
 import { holidays } from '../stores/Holidays'
+import { GET_HOLIDAYS_ENDPOINT } from '../constants/api'
 
 const locales = {
     'en-US': enUS,
@@ -25,16 +27,12 @@ function MyCalendar({ countries }) {
     const [events, setEvents] = useState([])
 
     useEffect(() => {
-
-        //need to add region support => change logic from find to filter for filteredEvents (not needed with fetched data)
-
         if (countries.length === 0) {
             setEvents([])
             return
         }
 
-        //fetch events for countries
-
+        /* This code is needed for filtering hardcoded holiday data */
         let filteredEvents = []
         countries.forEach(country => {
             const event = holidays.find(holiday => holiday.country === country.isoAlpha2Code)
@@ -46,7 +44,28 @@ function MyCalendar({ countries }) {
             setEvents([])
             return
         }
-        const eventDataSuitedForCalendar = filteredEvents.map(event => {
+        let chosenHolidays = filteredEvents
+        /* END OF THE CODE which is needed for filtering hardcoded holiday data */
+
+        let countriesCodes = ""
+        countries.forEach(country => {
+            countriesCodes += country.isoAlpha2Code + " "
+        })
+        countriesCodes = countriesCodes.trim().replace(/ /g, ',')
+
+        try {
+            axios.get(GET_HOLIDAYS_ENDPOINT + "?" + countriesCodes).then((response) => {
+                const holidayList = response.data;
+                chosenHolidays = holidayList
+            }).catch(error => {
+                console.log(error.message)
+                return
+            });
+        } catch (error) {
+            console.log("Server does not respond: " + error.message);
+        }
+
+        const eventDataSuitedForCalendar = chosenHolidays.map(event => {
             const country = countries.find(country => country.isoAlpha2Code === event.country)
             event.color = country.color
             event.id = event.holidayId

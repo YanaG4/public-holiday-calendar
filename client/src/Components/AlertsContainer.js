@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
+import axios from 'axios'
 import './AlertsContainer.css'
 import isEmail from 'validator/lib/isEmail';
+import { SEND_SUBSCRIPTION_ENDPOINT } from '../constants/api'
 
 const BUTTON_CLASSNAME = {
     SUCCESS: "main-button-success",
@@ -13,7 +15,7 @@ export default function AlertsContainer({ countries }) {
     const [errorMessage, setErrorMessage] = useState(null);
     const emailInput = useRef(null)
 
-    function subscribeHandler(button) {
+    async function subscribeHandler(button) {
         const email = emailInput.current.value
         if (email === '') {
             setErrorMessage('Please enter an email')
@@ -26,9 +28,8 @@ export default function AlertsContainer({ countries }) {
             }
             else {
                 animateButtonAwaiting(button)
-                try {
-                    sendReminderSubscription(email)
-                } catch (error) {
+                const status = await sendReminderSubscription(email)
+                if (status >= 300 || status < 200) {
                     animateButtonResult(button, 'error')
                     return
                 }
@@ -42,10 +43,41 @@ export default function AlertsContainer({ countries }) {
             setErrorMessage('Please enter a valid email')
         }
     }
-    function sendReminderSubscription(email) {
-        //send axios request
-        //if success => animate button
-        //else error-alert? +email != ''
+    async function sendReminderSubscription(email) {
+
+        let countriesCodes = ""
+        countries.forEach(country => {
+            countriesCodes += country.isoAlpha2Code + " "
+        })
+        countriesCodes = countriesCodes.trim().replace(/ /g, ',')
+
+        try {
+            let response = await axios({
+                method: 'post',
+                url: SEND_SUBSCRIPTION_ENDPOINT,
+                data: {
+                    email: email,
+                    countries: countriesCodes
+                }
+            })
+            let status = response.status
+            console.log(status)
+            return status
+        } catch (error) {
+            console.log(error.response)
+            console.log(error.response.status);
+            return error.response.status
+        }
+        // const options = {
+        //     method: 'post',
+        //     url: SEND_SUBSCRIPTION_ENDPOINT,
+        //     data: {
+        //         email: email,
+        //         countries: countriesCodes
+        //     }
+        // };
+
+        // axios(options);
 
     }
     function animateButtonAwaiting(button) {

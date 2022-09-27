@@ -7,17 +7,29 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { countries } from '../stores/Countries'
 import { colors } from '../stores/Colors'
+import { GET_COUNTRIES_ENDPOINT } from '../constants/api'
+import axios from 'axios';
 
 
 export default function CountryInput({ setCountries, chosenCountries }) {
-    const [allCcountries, setAllCountries] = useState(countries)
+    const [allCountries, setAllCountries] = useState(countries)
     useEffect(() => {
-        const countriesWithColors = countries.map(country => {
+        try {
+            axios.get(GET_COUNTRIES_ENDPOINT).then((response) => {
+                const countryList = response.data;
+                setAllCountries(countryList)
+            }).catch(error => {
+                console.log(error.message)
+            });
+        } catch (error) {
+            console.log("Server does not respond: " + error.message);
+        }
+
+        const countriesWithColors = allCountries.map(country => {
             country.color = countryNameToColour(country.commonName)
             return country
         })
         setAllCountries(countriesWithColors)
-        //console.log(chosenCountries);
     }, [])
 
 
@@ -68,7 +80,7 @@ export default function CountryInput({ setCountries, chosenCountries }) {
                 id="tags-filled"
                 onChange={(event, value) => setCountries(value)}
                 sx={{ width: "100%" }}
-                options={allCcountries}
+                options={allCountries}
                 value={chosenCountries || null}
                 autoHighlight
                 isOptionEqualToValue={(option, value) => option.isoAlpha2Code === value.isoAlpha2Code}
