@@ -35,11 +35,11 @@ function MyCalendar({ countries }) {
         /* This code is needed for filtering hardcoded holiday data */
         let filteredEvents = []
         countries.forEach(country => {
-            const event = holidays.find(holiday => holiday.country === country.isoAlpha2Code)
+            const event = holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)
             if (event)
-                filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.country === country.isoAlpha2Code)]
+                filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)]
         });
-
+        console.log(filteredEvents);
         if (filteredEvents.length === 0) {
             setEvents([])
             return
@@ -66,7 +66,7 @@ function MyCalendar({ countries }) {
         }
 
         const eventDataSuitedForCalendar = chosenHolidays.map(event => {
-            const country = countries.find(country => country.isoAlpha2Code === event.country)
+            const country = countries.find(country => country.isoAlpha2Code === event.countryCode)
             event.color = country.color
             event.id = event.holidayId
             event.title = country.commonName + ": " + event.name
@@ -78,7 +78,7 @@ function MyCalendar({ countries }) {
             return event
         })
         setEvents(eventDataSuitedForCalendar)
-
+        console.log(eventDataSuitedForCalendar);
     }, [countries])
 
     return (

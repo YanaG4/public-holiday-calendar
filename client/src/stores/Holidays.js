@@ -4,7 +4,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "EE", //alpha2code
+        countryCode: "EE", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -13,7 +13,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-26",
         provider: {},
-        country: "AD", //alpha2code
+        countryCode: "AD", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -22,7 +22,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-25",
         provider: {},
-        country: "DE", //alpha2code
+        countryCode: "DE", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -31,7 +31,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "FR", //alpha2code
+        countryCode: "FR", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -40,7 +40,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "AE", //alpha2code
+        countryCode: "AE", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -49,7 +49,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "AF", //alpha2code
+        countryCode: "AF", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -58,7 +58,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "AG", //alpha2code
+        countryCode: "AG", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -67,7 +67,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "AL", //alpha2code
+        countryCode: "AL", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -76,7 +76,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "AM", //alpha2code
+        countryCode: "AM", //alpha2code
         regional: true,
         regions: "string"
     },
@@ -85,7 +85,7 @@ export const holidays = [
         name: "New Year!!!",
         date: "2022-09-27",
         provider: {},
-        country: "AO", //alpha2code
+        countryCode: "AO", //alpha2code
         regional: true,
         regions: "string"
     }

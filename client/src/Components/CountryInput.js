@@ -12,25 +12,31 @@ import axios from 'axios';
 
 
 export default function CountryInput({ setCountries, chosenCountries }) {
-    const [allCountries, setAllCountries] = useState(countries)
+    const [allCountries, setAllCountries] = useState([])
     useEffect(() => {
-        try {
+        if (allCountries.length === 0) {
+            let reqStatus = null
             axios.get(GET_COUNTRIES_ENDPOINT).then((response) => {
                 const countryList = response.data;
-                setAllCountries(countryList)
+                reqStatus = response.status
+                const countriesWithColors = countryList.map(country => {
+                    country.color = countryNameToColour(country.commonName)
+                    return country
+                })
+                setAllCountries(countriesWithColors)
             }).catch(error => {
                 console.log(error.message)
             });
-        } catch (error) {
-            console.log("Server does not respond: " + error.message);
+            if (reqStatus < 200 || reqStatus >= 300) {
+                const countriesWithColors = countries.map(country => {
+                    country.color = countryNameToColour(country.commonName)
+                    return country
+                })
+                setAllCountries(countriesWithColors)
+            }
         }
-
-        const countriesWithColors = allCountries.map(country => {
-            country.color = countryNameToColour(country.commonName)
-            return country
-        })
-        setAllCountries(countriesWithColors)
-    }, [])
+        console.log(allCountries);
+    }, [allCountries])
 
 
     function countryNameToColour(countryName) {
@@ -112,6 +118,7 @@ export default function CountryInput({ setCountries, chosenCountries }) {
                 }
                 renderInput={(params) => (
                     <TextField
+                        autoFocus
                         {...params}
                         placeholder="Choose a country"
                         sx={{

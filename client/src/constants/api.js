@@ -1,5 +1,5 @@
-export const API_ROOT = 'https://www.holidays.int.kn/'
-export const SUBCRIPTION_ENDPOINT = API_ROOT + 'ics/'
+export const API_ROOT = 'http://localhost:8080/'
+export const SUBCRIPTION_ENDPOINT = API_ROOT + 'ics/?countryCodes='
 export const GET_COUNTRIES_ENDPOINT = API_ROOT + 'api/location/countries'
 export const GET_HOLIDAYS_ENDPOINT = API_ROOT + 'api/holiday'
 export const SEND_SUBSCRIPTION_ENDPOINT = API_ROOT + 'api/subscription'
