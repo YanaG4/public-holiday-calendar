@@ -45,11 +45,10 @@ export default function AlertsContainer({ countries }) {
     }
     async function sendReminderSubscription(email) {
 
-        let countriesCodes = ""
+        let countriesCodes = []
         countries.forEach(country => {
-            countriesCodes += country.isoAlpha2Code + " "
+            countriesCodes.push(country.isoAlpha2Code)
         })
-        countriesCodes = countriesCodes.trim().replace(/ /g, ',')
 
         try {
             let response = await axios({
@@ -68,17 +67,6 @@ export default function AlertsContainer({ countries }) {
             console.log(error.response.status);
             return error.response.status
         }
-        // const options = {
-        //     method: 'post',
-        //     url: SEND_SUBSCRIPTION_ENDPOINT,
-        //     data: {
-        //         email: email,
-        //         countries: countriesCodes
-        //     }
-        // };
-
-        // axios(options);
-
     }
     function animateButtonAwaiting(button) {
         button.classList.replace(BUTTON_CLASSNAME.NORMAL, BUTTON_CLASSNAME.AWAIT)
