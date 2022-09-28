@@ -17,7 +17,7 @@ And subscribe to the e-mail reminders.
 
 ### Features
 
-- My own design 
+- My own design 🐹
 
 - Getting/Sending data from/to backend using Axios
 
