@@ -10,7 +10,6 @@ export default function CountryContainer({ setCountries, chosenCountries }) {
             <CountryInput
                 setCountries={setCountries}
                 chosenCountries={chosenCountries} />
-            <button className='main-button'>Choose</button>
         </div>
     )
 }

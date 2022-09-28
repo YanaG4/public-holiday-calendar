@@ -3,7 +3,9 @@
     top: 263px;
     z-index: 50;
     height: auto;
-    min-height: 300px;
+    min-height: 270px;
+    justify-content: space-evenly;
+    padding: 25px 50px 50px 50px;
 }
 .country-input input {
     border: none;
