@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
@@ -26,60 +26,66 @@ const localizer = dateFnsLocalizer({
 function MyCalendar({ countries }) {
     const [events, setEvents] = useState([])
 
+    const saveEventsForCalendar = useCallback((chosenHolidays) => {
+        const eventDataSuitedForCalendar = chosenHolidays.map(event => {
+            const country = countries.find(country => country.isoAlpha2Code === event.countryCode)
+            event.color = country.color
+            event.id = event.holidayId
+            event.title = country.isoAlpha2Code + ": " + event.name
+            if (event.regional) {
+                event.title = event.title + ": " + event.regions.toString().replace(/,/g, ", ")
+            }
+            event.allDay = true
+            event.start = new Date(event.date)
+            event.end = new Date(event.date)
+            return event
+        })
+        setEvents(eventDataSuitedForCalendar)
+    }, [countries])
+
     useEffect(() => {
         if (countries.length === 0) {
             setEvents([])
             return
         }
 
-        /* This code is needed for filtering hardcoded holiday data */
-        let filteredEvents = []
-        countries.forEach(country => {
-            const event = holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)
-            if (event)
-                filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)]
-        });
-        console.log(filteredEvents);
-        if (filteredEvents.length === 0) {
-            setEvents([])
-            return
-        }
-        let chosenHolidays = filteredEvents
-        /* END OF THE CODE which is needed for filtering hardcoded holiday data */
-
+        let chosenHolidays
+        let reqStatus = null
         let countriesCodes = ""
         countries.forEach(country => {
             countriesCodes += country.isoAlpha2Code + " "
         })
         countriesCodes = countriesCodes.trim().replace(/ /g, ',')
 
-        try {
-            axios.get(GET_HOLIDAYS_ENDPOINT + "?" + countriesCodes).then((response) => {
-                const holidayList = response.data;
-                chosenHolidays = holidayList
-            }).catch(error => {
-                console.log(error.message)
-                return
-            });
-        } catch (error) {
-            console.log("Server does not respond: " + error.message);
-        }
+        axios.get(GET_HOLIDAYS_ENDPOINT + "?" + countriesCodes).then((response) => {
+            const holidayList = response.data;
+            reqStatus = response.status
+            chosenHolidays = holidayList
+            saveEventsForCalendar(chosenHolidays)
+        }).catch(error => {
+            console.log(error.message)
+            return
+        });
 
-        const eventDataSuitedForCalendar = chosenHolidays.map(event => {
-            const country = countries.find(country => country.isoAlpha2Code === event.countryCode)
-            event.color = country.color
-            event.id = event.holidayId
-            event.title = country.commonName + ": " + event.name
-            event.allDay = true
-            event.start = new Date(event.date)
-            // let endDate = new Date(event.date)
-            // endDate.setDate(endDate.getDate() + 1)
-            event.end = new Date(event.date)
-            return event
-        })
-        setEvents(eventDataSuitedForCalendar)
-        console.log(eventDataSuitedForCalendar);
-    }, [countries])
+        if (reqStatus < 200 || reqStatus >= 300) {
+            /* This code is needed for filtering hardcoded holiday data */
+            let filteredEvents = []
+            countries.forEach(country => {
+                const event = holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)
+                if (event)
+                    filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)]
+            });
+            if (filteredEvents.length === 0) {
+                setEvents([])
+                return
+            }
+            chosenHolidays = filteredEvents
+            saveEventsForCalendar(chosenHolidays)
+            /* END OF THE CODE which is needed for filtering hardcoded holiday data */
+        }
+    }, [countries.length, saveEventsForCalendar])
+
+
 
     return (
         <>

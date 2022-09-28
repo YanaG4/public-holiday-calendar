@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import './CountryContainer.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -13,33 +13,8 @@ import axios from 'axios';
 
 export default function CountryInput({ setCountries, chosenCountries }) {
     const [allCountries, setAllCountries] = useState([])
-    useEffect(() => {
-        if (allCountries.length === 0) {
-            let reqStatus = null
-            axios.get(GET_COUNTRIES_ENDPOINT).then((response) => {
-                const countryList = response.data;
-                reqStatus = response.status
-                const countriesWithColors = countryList.map(country => {
-                    country.color = countryNameToColour(country.commonName)
-                    return country
-                })
-                setAllCountries(countriesWithColors)
-            }).catch(error => {
-                console.log(error.message)
-            });
-            if (reqStatus < 200 || reqStatus >= 300) {
-                const countriesWithColors = countries.map(country => {
-                    country.color = countryNameToColour(country.commonName)
-                    return country
-                })
-                setAllCountries(countriesWithColors)
-            }
-        }
-        console.log(allCountries);
-    }, [allCountries])
 
-
-    function countryNameToColour(countryName) {
+    const countryNameToColour = useCallback((countryName) => {
         let hash = 0;
 
         if (countryName.length === 0)
@@ -50,7 +25,30 @@ export default function CountryInput({ setCountries, chosenCountries }) {
         }
         hash = ((hash % colors.length) + colors.length) % colors.length;
         return colors[hash];
-    }
+    }, [allCountries.length])
+
+    useEffect(() => {
+        let reqStatus = null
+        axios.get(GET_COUNTRIES_ENDPOINT).then((response) => {
+            const countryList = response.data;
+            reqStatus = response.status
+            const countriesWithColors = countryList.map(country => {
+                country.color = countryNameToColour(country.commonName)
+                return country
+            })
+            setAllCountries(countriesWithColors)
+        }).catch(error => {
+            console.log(error.message)
+        });
+        if (reqStatus < 200 || reqStatus >= 300) {
+            const countriesWithColors = countries.map(country => {
+                country.color = countryNameToColour(country.commonName)
+                return country
+            })
+            setAllCountries(countriesWithColors)
+        }
+        console.log(allCountries);
+    }, [allCountries.length])
 
 
     const theme = createTheme({
