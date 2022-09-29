@@ -1,10 +1,5 @@
 # Public Holiday Calendar
 
-## Design
-
-[![Screnshot of the project](https://i.postimg.cc/xCGZksJZ/screenshot-hardcodeddata.png)](https://postimg.cc/9RMbKYBP)
-
-
 ## Description
 
 A public holiday calendar that shows events in the chosen countries! 
