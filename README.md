@@ -1,5 +1,9 @@
 # Public Holiday Calendar
 
+## Design
+
+[![Screnshot of the project](https://i.postimg.cc/xCGZksJZ/screenshot-hardcodeddata.png)](https://postimg.cc/9RMbKYBP)
+
 ## Description
 
 A public holiday calendar that shows events in the chosen countries! 
@@ -33,6 +37,7 @@ And subscribe to the e-mail reminders.
 4. Use the generated links to subscribe to the feed
 5. Check the instruction if needed
 
+For the frontend run see the section: <b>How to run (for a frontend demo)</b> down below
 
 ## Tech Stack
 
@@ -62,6 +67,12 @@ And subscribe to the e-mail reminders.
 - Go to "cd client" in the terminal
 - Type "npm install" in the terminal
 - Run the project with "npm start" in the terminal
+
+<b>On the site: </b>
+
+- To see the hardcoded data go to the September 2022 on the calendar
+- Choose some countries (e.g. France, Estonia, Germany - they have some hardcoded events)
+- The "New Year" events appear on the calendar ( September 2022 )
 
 ## Author
 
