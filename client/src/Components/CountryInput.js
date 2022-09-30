@@ -16,7 +16,6 @@ export default function CountryInput({ setCountries, chosenCountries }) {
 
     const countryNameToColour = useCallback((countryName) => {
         let hash = 0;
-
         if (countryName.length === 0)
             return hash;
         for (let i = 0; i < countryName.length; i++) {
