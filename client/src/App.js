@@ -7,6 +7,8 @@ import Footer from './Components/Footer';
 import Header from './Components/Header';
 import SubscriptionContainer from './Components/iCalSubscription/SubscriptionContainer'
 
+export const CountryContext = React.createContext()
+
 function App() {
   const [chosenCountries, setChosenCountries] = useState(() => {
     const savedCountries = JSON.parse(localStorage.getItem('chosenCountries'))
@@ -25,16 +27,12 @@ function App() {
   return (
     <div className='main-container'>
       <Header />
-      <CountryContainer
-        setCountries={setCountriesHandler}
-        chosenCountries={chosenCountries}
-      />
-      <Calendar
-        countries={chosenCountries} />
-      <AlertsContainer
-        countries={chosenCountries} />
-      <SubscriptionContainer
-        countries={chosenCountries} />
+      <CountryContext.Provider value={chosenCountries}>
+        <CountryContainer setCountries={setCountriesHandler} />
+        <Calendar />
+        <AlertsContainer />
+        <SubscriptionContainer />
+      </CountryContext.Provider>
       <Footer />
     </div>
   );

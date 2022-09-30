@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import axios from 'axios'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
@@ -10,6 +10,7 @@ import enUS from 'date-fns/locale/en-US'
 import './Calendar.scss'
 import { holidays } from '../stores/Holidays'
 import { GET_HOLIDAYS_ENDPOINT } from '../constants/api'
+import { CountryContext } from '../App'
 
 const locales = {
     'en-US': enUS,
@@ -23,8 +24,10 @@ const localizer = dateFnsLocalizer({
     locales,
 })
 
-function MyCalendar({ countries }) {
+
+function MyCalendar() {
     const [events, setEvents] = useState([])
+    const countries = useContext(CountryContext)
 
     const saveEventsForCalendar = useCallback((chosenHolidays) => {
         const eventDataSuitedForCalendar = chosenHolidays.map(event => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useContext } from 'react'
 import './CountryContainer.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -9,10 +9,11 @@ import { countries } from '../stores/Countries'
 import { colors } from '../stores/Colors'
 import { GET_COUNTRIES_ENDPOINT } from '../constants/api'
 import axios from 'axios';
+import { CountryContext } from '../App'
 
-
-export default function CountryInput({ setCountries, chosenCountries }) {
+export default function CountryInput({ setCountries }) {
     const [allCountries, setAllCountries] = useState([])
+    const chosenCountries = useContext(CountryContext)
 
     const countryNameToColour = useCallback((countryName) => {
         let hash = 0;
