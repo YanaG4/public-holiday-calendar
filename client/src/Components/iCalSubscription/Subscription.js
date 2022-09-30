@@ -14,7 +14,7 @@ export default function Subscription() {
     const countries = useCountry()
 
     useEffect(() => {
-        if (countries.length === 0) {
+        if (!countries.length) {
             setSingleLink(LINK_WARNINGS.NO_COUNTRY_TEXT)
             setSeparateLinks([LINK_WARNINGS.NO_COUNTRY_TEXT])
             return

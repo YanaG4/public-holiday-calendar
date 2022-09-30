@@ -45,7 +45,7 @@ function MyCalendar() {
     }, [countries])
 
     useEffect(() => {
-        if (countries.length === 0) {
+        if (!countries.length) {
             setEvents([])
             return
         }

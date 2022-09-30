@@ -50,7 +50,7 @@ export default function AlertsContainer() {
             setErrorMessage(WARNING_MESSAGE.EMAIL_IS_INVALID)
             return 0
         }
-        if (countries.length === 0) {
+        if (!countries.length) {
             setErrorMessage(WARNING_MESSAGE.NO_COUNTRY_SELECTED)
             return 0
         }
