@@ -10,12 +10,11 @@ import enUS from 'date-fns/locale/en-US'
 import './Calendar.scss'
 import { holidays } from '../stores/Holidays'
 import { GET_HOLIDAYS_ENDPOINT } from '../constants/api'
-import { CountryContext } from '../App'
+import { useCountry } from '../CountryContext'
 
 const locales = {
     'en-US': enUS,
 }
-
 const localizer = dateFnsLocalizer({
     format,
     parse,
@@ -24,10 +23,9 @@ const localizer = dateFnsLocalizer({
     locales,
 })
 
-
 function MyCalendar() {
     const [events, setEvents] = useState([])
-    const countries = useContext(CountryContext)
+    const countries = useCountry()
 
     const saveEventsForCalendar = useCallback((chosenHolidays) => {
         const eventDataSuitedForCalendar = chosenHolidays.map(event => {

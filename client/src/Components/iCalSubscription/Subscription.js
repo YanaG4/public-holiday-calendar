@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './Subscription.css'
 import { SUBCRIPTION_ENDPOINT } from '../../constants/api'
-import { CountryContext } from '../../App'
+import { useCountry } from '../../CountryContext'
 
 const LINK_WARNINGS = {
     NO_COUNTRY_TEXT: "Choose countries to get the subscription link",
@@ -11,7 +11,7 @@ const LINK_WARNINGS = {
 export default function Subscription() {
     const [singleLink, setSingleLink] = useState(null)
     const [separateLinks, setSeparateLinks] = useState([])
-    const countries = useContext(CountryContext)
+    const countries = useCountry()
 
     useEffect(() => {
         if (countries.length === 0) {

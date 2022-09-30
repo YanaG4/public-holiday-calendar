@@ -3,7 +3,7 @@ import axios from 'axios'
 import './AlertsContainer.css'
 import isEmail from 'validator/lib/isEmail';
 import { SEND_SUBSCRIPTION_ENDPOINT } from '../constants/api'
-import { CountryContext } from '../App'
+import { useCountry } from '../CountryContext'
 
 const BUTTON_CLASSNAME = {
     SUCCESS: "main-button-success",
@@ -20,7 +20,7 @@ const WARNING_MESSAGE = {
 }
 
 export default function AlertsContainer() {
-    const countries = useContext(CountryContext)
+    const countries = useCountry()
     const [errorMessage, setErrorMessage] = useState(null);
     const emailInput = useRef(null)
 
