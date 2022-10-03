@@ -56,7 +56,7 @@ For the frontend run see the section: <b>How to run (for a frontend demo)</b> do
 - E-mail validation
 - Getting and sending data to the server
 - Immutability
-- Hooks (useState, useEffect, useRef, useCallback)
+- Hooks (useState, useEffect, useRef, useCallback, useContext)
 - Media queries
 - CSS animations
 - Customized react-big-calendar 
