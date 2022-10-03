@@ -58,7 +58,7 @@ function MyCalendar() {
         })
         countriesCodes = countriesCodes.trim().replace(/ /g, ',')
 
-        axios.get(GET_HOLIDAYS_ENDPOINT + "?" + countriesCodes).then((response) => {
+        axios.get(`${GET_HOLIDAYS_ENDPOINT}?countries=${countriesCodes}`).then((response) => {
             const holidayList = response.data;
             reqStatus = response.status
             chosenHolidays = holidayList
