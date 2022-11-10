@@ -1,5 +1,17 @@
 # Public Holiday Calendar
 
+## Demo
+
+https://sinxenon.github.io/public-holiday-calendar/
+
+### To see changes on calendar: 
+
+- To see the hardcoded data go to the September 2022 on the calendar
+- Choose some countries (e.g. France, Estonia, Germany - they have some hardcoded events)
+- The "New Year" events appear on the calendar ( September 2022 )
+
+Also check "How to use" section down below.
+
 ## Design
 
 [![Screnshot of the project](https://i.postimg.cc/xCGZksJZ/screenshot-hardcodeddata.png)](https://postimg.cc/9RMbKYBP)
