@@ -1,10 +1,9 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
+import './Instruction.css'
 import Office365 from './Office365'
 import Outlook2013 from './Outlook2013'
-import './Instruction.css'
 import Outlook365Image from '../../img/outlook365.png'
 import Outlook2013Image from '../../img/outlook2013.png'
-import { useState } from 'react'
 
 const MAIL_CLIENTS = {
     OFFICE365: 'Office 365',
