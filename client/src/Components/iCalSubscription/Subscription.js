@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useCountry } from '../../CountryContext'
-import './Subscription.css'
 import { SUBCRIPTION_ENDPOINT } from '../../constants/api'
+
+import './Subscription.css'
 
 
 const LINK_WARNINGS = {
@@ -14,27 +15,28 @@ export default function Subscription() {
     const [separateLinks, setSeparateLinks] = useState([])
     const countries = useCountry()
 
-    useEffect(() => {
+    const setSubscriptionLinks = useCallback(() => { 
         if (!countries.length) {
-            setSingleLink(LINK_WARNINGS.NO_COUNTRY_TEXT)
-            setSeparateLinks([LINK_WARNINGS.NO_COUNTRY_TEXT])
-            return
+            setSingleLink(LINK_WARNINGS.NO_COUNTRY_TEXT);
+            setSeparateLinks([LINK_WARNINGS.NO_COUNTRY_TEXT]);
+            return;
         }
+        const newSingleLinks = [];
+        const newSeparateLinks = [];
+        for (let i = 0; i < countries.length; i++) {
+            newSeparateLinks.push(SUBCRIPTION_ENDPOINT + countries[i].isoAlpha2Code);
+            newSingleLinks.push(countries[i].isoAlpha2Code);
+        }
+        setSingleLink(SUBCRIPTION_ENDPOINT + newSingleLinks.join());
+        setSeparateLinks(newSeparateLinks.length === 1 
+            ? [LINK_WARNINGS.NOT_ENOUGH_COUNTRIES_TEXT] 
+            : newSeparateLinks);
+    }, [countries])
+    useEffect(() => {
         setSubscriptionLinks()
-    }, [countries.length])
+    }, [setSubscriptionLinks])
 
-    function setSubscriptionLinks() {
-        setSingleLink(SUBCRIPTION_ENDPOINT + countries[0].isoAlpha2Code)
-        if (countries.length === 1) {
-            setSeparateLinks([LINK_WARNINGS.NOT_ENOUGH_COUNTRIES_TEXT])
-            return
-        }
-        setSeparateLinks([SUBCRIPTION_ENDPOINT + countries[0].isoAlpha2Code])
-        for (let i = 1; i < countries.length; i++) {
-            setSeparateLinks(prevState => [...prevState, SUBCRIPTION_ENDPOINT + countries[i].isoAlpha2Code])
-            setSingleLink(prevState => prevState + ',' + countries[i].isoAlpha2Code)
-        }
-    }
+    
     return (
         <div>
             <div className='text-header'>
