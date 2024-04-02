@@ -20,6 +20,7 @@ function Instruction() {
         else
             setOutlookVersion(MAIL_CLIENTS.OFFICE365)
     }
+    
     return (
         <section className='instruction-main-container'>
             <div className='button-container'>
@@ -30,7 +31,7 @@ function Instruction() {
             <div className='instruction-container'>
                 <div className='text-header'>
                     <h3>Instruction</h3>
-                    <div className='underline'></div>
+                    <div className='underline' />
                 </div>
                 <div className='instruction-text'>
                     {outlookVesrion === MAIL_CLIENTS.OFFICE365 ? <Office365 /> : <Outlook2013 />}

@@ -4,7 +4,6 @@ import { SUBCRIPTION_ENDPOINT } from '../../constants/api'
 
 import './Subscription.css'
 
-
 const LINK_WARNINGS = {
     NO_COUNTRY_TEXT: "Choose countries to get the subscription link",
     NOT_ENOUGH_COUNTRIES_TEXT: "Choose more than one country to get separate links"
@@ -14,7 +13,7 @@ export default function Subscription() {
     const [singleLink, setSingleLink] = useState(null)
     const [separateLinks, setSeparateLinks] = useState([])
     const countries = useCountry()
-
+    
     const setSubscriptionLinks = useCallback(() => { 
         if (!countries.length) {
             setSingleLink(LINK_WARNINGS.NO_COUNTRY_TEXT);

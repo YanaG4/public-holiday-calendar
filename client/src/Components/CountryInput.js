@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Box, TextField, Autocomplete, Chip } from '@mui/material';
-import { countries } from '../stores/Countries'
-import { colors } from '../stores/Colors'
+import { countries } from '../stores/Countries' //hardcoded data
+import { getCountriesWithColors } from '../utils/colorPicker';
 import { useCountry, useCountryUpdate } from '../CountryContext'
 import { GET_COUNTRIES_ENDPOINT } from '../constants/api'
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from '../theme/MUItheme';
 import './CountryContainer.css'
 
 export default function CountryInput() {
@@ -14,66 +15,29 @@ export default function CountryInput() {
     const chosenCountries = useCountry()
     const setCountries = useCountryUpdate()
 
-    const countryNameToColour = useCallback((countryName) => {
-        let hash = 0;
-        if (countryName.length === 0)
-            return hash;
-        for (let i = 0; i < countryName.length; i++) {
-            hash = countryName.charCodeAt(i) + ((hash << 5) - hash);
-            hash = hash & hash;
-        }
-        hash = ((hash % colors.length) + colors.length) % colors.length;
-        return colors[hash];
-    }, [allCountries.length])
-
     useEffect(() => {
-        let reqStatus = null
-        axios.get(GET_COUNTRIES_ENDPOINT).then((response) => {
-            const countryList = response.data;
-            reqStatus = response.status
-            const countriesWithColors = countryList.map(country => {
-                country.color = countryNameToColour(country.commonName)
-                return country
-            })
-            setAllCountries(countriesWithColors)
-        }).catch(error => {
-            console.log(error.message)
-        });
-        if (reqStatus < 200 || reqStatus >= 300) {
-            const countriesWithColors = countries.map(country => {
-                country.color = countryNameToColour(country.commonName)
-                return country
-            })
-            setAllCountries(countriesWithColors)
-        }
-        console.log(allCountries);
-    }, [allCountries.length])
+        let reqStatus = null;
+        let active = true;
+        let countriesWithColors = []
+        
+        axios.get(GET_COUNTRIES_ENDPOINT)
+            .then((response) => {
+                const countryList = response.data;
+                reqStatus = response.status
+                countriesWithColors = getCountriesWithColors(countryList)})
+            .catch(error => {
+                console.log(error.message)});
 
-
-    const theme = createTheme({
-        components: {
-            MuiOutlinedInput: {
-                styleOverrides: {
-                    root: {
-                        ".MuiOutlinedInput-notchedOutline": {
-                            minHeight: 60,
-                            borderRadius: 15,
-                            outline: 'none',
-                            paddingLeft: 15,
-                            border: '2px solid #2C66AE70',
-                        },
-                        "&:hover .MuiOutlinedInput-notchedOutline": {
-                            border: '.149rem solid #599beb'
-                        },
-                        "&:focus .MuiOutlinedInput-notchedOutline": {
-                            border: '.149rem solid #599beb'
-                        }
-                    }
-                }
-            }
-        }
-    });
-
+        if (reqStatus < 200 || reqStatus >= 300) //if real data isn't available - use hardcoded data
+            countriesWithColors = getCountriesWithColors(countries);
+        
+        if (active)
+            setAllCountries(countriesWithColors);
+    
+        return () => {
+            active = false;
+        };
+    }, [])
 
     return (
         <ThemeProvider theme={theme}>
@@ -111,8 +75,7 @@ export default function CountryInput() {
                             }}
                             {...getTagProps({ index })}
                         />
-                    ))
-                }
+                ))}
                 renderInput={(params) => (
                     <TextField
                         autoFocus
@@ -127,7 +90,6 @@ export default function CountryInput() {
                             ...params.inputProps,
                             autoComplete: 'off',
                         }}
-
                     />
                 )}
             />
