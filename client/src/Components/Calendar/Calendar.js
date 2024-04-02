@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { holidays } from '../../stores/Holidays';
 import { useCountry } from '../../CountryContext';
 import { GET_HOLIDAYS_ENDPOINT } from '../../constants/api';
+import { getCalendarFormattedEvent, getCountryCodes, getHardcodedEvents } from '../../utils/calendarEvent';
 /* date format */
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -26,67 +26,44 @@ const localizer = dateFnsLocalizer({
 })
 
 function MyCalendar() {
-    const [events, setEvents] = useState([])
-    const countries = useCountry()
+    const [events, setEvents] = useState([]);
+    const countries = useCountry();
 
     const saveEventsForCalendar = useCallback((chosenHolidays) => {
-        const eventDataSuitedForCalendar = chosenHolidays.map(event => {
-            const country = countries.find(country => country.isoAlpha2Code === event.countryCode)
-            event.color = country.color
-            event.id = event.holidayId
-            event.title = country.isoAlpha2Code + ": " + event.name
-            if (event.regional) {
-                event.title = event.title + ": " + event.regions.toString().replace(/,/g, ", ")
-            }
-            event.allDay = true
-            event.start = new Date(event.date)
-            event.end = new Date(event.date)
-            return event
-        })
-        setEvents(eventDataSuitedForCalendar)
+        setEvents(getCalendarFormattedEvent(chosenHolidays, countries));
     }, [countries])
 
     useEffect(() => {
         if (!countries.length) {
-            setEvents([])
-            return
+            setEvents([]);
+            return;
         }
 
-        let chosenHolidays
-        let reqStatus = null
-        let countriesCodes = ""
-        countries.forEach(country => {
-            countriesCodes += country.isoAlpha2Code + " "
-        })
-        countriesCodes = countriesCodes.trim().replace(/ /g, ',')
+        let active = true;
+        let chosenHolidays = undefined;
+        let reqStatus = null;
+        let countryCodes = getCountryCodes(countries);
 
-        axios.get(`${GET_HOLIDAYS_ENDPOINT}?countries=${countriesCodes}`).then((response) => {
-            const holidayList = response.data;
-            reqStatus = response.status
-            chosenHolidays = holidayList
-            saveEventsForCalendar(chosenHolidays)
-        }).catch(error => {
-            console.log(error.message)
-            return
-        });
+        axios.get(`${GET_HOLIDAYS_ENDPOINT}?countries=${countryCodes}`)
+            .then((response) => {
+                const holidayList = response.data;
+                reqStatus = response.status;
+                chosenHolidays = holidayList;})
+            .catch(error => {
+                console.log(error.message)
+                return });
 
-        if (reqStatus < 200 || reqStatus >= 300) {
-            /* This code is needed for filtering hardcoded holiday data */
-            let filteredEvents = []
-            countries.forEach(country => {
-                const event = holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)
-                if (event)
-                    filteredEvents = [...filteredEvents, holidays.find(holiday => holiday.countryCode === country.isoAlpha2Code)]
-            });
-            if (filteredEvents.length === 0) {
-                setEvents([])
-                return
-            }
-            chosenHolidays = filteredEvents
-            saveEventsForCalendar(chosenHolidays)
-            /* END OF THE CODE which is needed for filtering hardcoded holiday data */
+        if (reqStatus < 200 || reqStatus >= 300) { //if real data isn't available - use hardcoded data
+            chosenHolidays = getHardcodedEvents(countries);
         }
-    }, [countries.length, saveEventsForCalendar])
+
+        if (active)
+            saveEventsForCalendar(chosenHolidays);
+
+        return () => {
+            active = false;
+        }
+    }, [countries, saveEventsForCalendar])
 
 
 
