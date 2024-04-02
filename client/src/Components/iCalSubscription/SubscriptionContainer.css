@@ -22,7 +22,6 @@
 .subscription-decoration {
     position: relative;
 } 
-
 .subscription-container {     
     color:white;
     max-width: 800px;
@@ -40,9 +39,7 @@
     padding: 30px 0;
 }
 
-
-
-
+/* Wave container */
 .wave-container {
     position: absolute;
     top: -1px;

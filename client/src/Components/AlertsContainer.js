@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { useCountry } from '../CountryContext'
-import './AlertsContainer.css'
 import axios from 'axios'
+import { useCountry } from '../CountryContext'
 import isEmail from 'validator/lib/isEmail';
 import { SEND_SUBSCRIPTION_ENDPOINT } from '../constants/api'
+
+import './AlertsContainer.css'
 
 
 const BUTTON_CLASSNAME = {

@@ -1,9 +1,10 @@
 import React, { memo, useState } from 'react'
-import './Instruction.css'
 import Office365 from './Office365'
 import Outlook2013 from './Outlook2013'
 import Outlook365Image from '../../img/outlook365.png'
 import Outlook2013Image from '../../img/outlook2013.png'
+
+import './Instruction.css'
 
 const MAIL_CLIENTS = {
     OFFICE365: 'Office 365',
@@ -23,7 +24,7 @@ function Instruction() {
         <section className='instruction-main-container'>
             <div className='button-container'>
                 <button onClick={changeOutlookVersion}>
-                    <img src={outlookVesrion === MAIL_CLIENTS.OFFICE365 ? Outlook365Image : Outlook2013Image} alt="" />{outlookVesrion}</button>
+                    <img src={outlookVesrion === MAIL_CLIENTS.OFFICE365 ? Outlook365Image : Outlook2013Image} alt="Mail icon." />{outlookVesrion}</button>
                 <button onClick={changeOutlookVersion}>{outlookVesrion === MAIL_CLIENTS.OFFICE365 ? MAIL_CLIENTS.OUTLOOK2013 : MAIL_CLIENTS.OFFICE365}</button>
             </div>
             <div className='instruction-container'>
