@@ -1,16 +1,18 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
-import './Calendar.scss'
+
 import { holidays } from '../stores/Holidays'
-import { GET_HOLIDAYS_ENDPOINT } from '../constants/api'
 import { useCountry } from '../CountryContext'
+import { GET_HOLIDAYS_ENDPOINT } from '../constants/api'
+
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
+import './Calendar.scss'
 
 const locales = {
     'en-US': enUS,

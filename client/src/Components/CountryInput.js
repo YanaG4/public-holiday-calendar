@@ -1,15 +1,16 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import axios from 'axios';
-import './CountryContainer.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { countries } from '../stores/Countries'
 import { colors } from '../stores/Colors'
-import { GET_COUNTRIES_ENDPOINT } from '../constants/api'
 import { useCountry, useCountryUpdate } from '../CountryContext'
+import { GET_COUNTRIES_ENDPOINT } from '../constants/api'
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import './CountryContainer.css'
 
 export default function CountryInput() {
     const [allCountries, setAllCountries] = useState([])

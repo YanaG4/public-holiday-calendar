@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCountry } from '../../CountryContext'
 import './Subscription.css'
 import { SUBCRIPTION_ENDPOINT } from '../../constants/api'
