@@ -7,9 +7,7 @@ import './SubscriptionContainer.css'
 export default function SubscriptionContainer() {
     return (
         <section className='subscription-section'>
-            <div className='subscription-container'>
-                <Subscription />
-            </div>
+            <Subscription />
             <Instruction />
             <div className='subscription-gradient'>
                 <div className='subscription-decoration'>

@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import axios from 'axios'
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
-import format from 'date-fns/format'
-import parse from 'date-fns/parse'
-import startOfWeek from 'date-fns/startOfWeek'
-import getDay from 'date-fns/getDay'
-import enUS from 'date-fns/locale/en-US'
+import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import { holidays } from '../stores/Holidays';
+import { useCountry } from '../CountryContext';
+import { GET_HOLIDAYS_ENDPOINT } from '../constants/api';
+/* date format */
+import format from 'date-fns/format';
+import parse from 'date-fns/parse';
+import startOfWeek from 'date-fns/startOfWeek';
+import getDay from 'date-fns/getDay';
+import enUS from 'date-fns/locale/en-US';
 
-import { holidays } from '../stores/Holidays'
-import { useCountry } from '../CountryContext'
-import { GET_HOLIDAYS_ENDPOINT } from '../constants/api'
-
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
-import './Calendar.scss'
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+import './Calendar.scss';
 
 const locales = {
     'en-US': enUS,
@@ -91,18 +91,16 @@ function MyCalendar() {
 
 
     return (
-        <>
-            <div className='calendar-container'>
-                <Calendar
-                    localizer={localizer}
-                    events={events}
-                    eventPropGetter={(events) => {
-                        const backgroundColor = events.color ? events.color : '#8A2BE2';
-                        return { style: { backgroundColor } }
-                    }}
-                />
-            </div>
-        </>
+        <div className='calendar-container'>
+            <Calendar
+                localizer={localizer}
+                events={events}
+                eventPropGetter={(events) => {
+                    const backgroundColor = events.color ? events.color : '#8A2BE2';
+                    return { style: { backgroundColor } }
+                }}
+            />
+        </div>
     );
 }
 

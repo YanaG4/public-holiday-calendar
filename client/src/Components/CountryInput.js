@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Chip from "@mui/material/Chip";
+import { Box, TextField, Autocomplete, Chip } from '@mui/material';
 import { countries } from '../stores/Countries'
 import { colors } from '../stores/Colors'
 import { useCountry, useCountryUpdate } from '../CountryContext'
