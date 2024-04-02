@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Box, TextField, Autocomplete, Chip } from '@mui/material';
-import { countries } from '../stores/Countries' //hardcoded data
-import { getCountriesWithColors } from '../utils/colorPicker';
-import { useCountry, useCountryUpdate } from '../CountryContext'
-import { GET_COUNTRIES_ENDPOINT } from '../constants/api'
+import { countries } from '../../stores/Countries' //hardcoded data
+import { getCountriesWithColors } from '../../utils/colorPicker';
+import { useCountry, useCountryUpdate } from '../../CountryContext'
+import { GET_COUNTRIES_ENDPOINT } from '../../constants/api'
 
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from '../theme/MUItheme';
+import { theme } from '../../theme/MUItheme';
 import './CountryContainer.css'
 
 export default function CountryInput() {

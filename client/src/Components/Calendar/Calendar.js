@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { holidays } from '../stores/Holidays';
-import { useCountry } from '../CountryContext';
-import { GET_HOLIDAYS_ENDPOINT } from '../constants/api';
+import { holidays } from '../../stores/Holidays';
+import { useCountry } from '../../CountryContext';
+import { GET_HOLIDAYS_ENDPOINT } from '../../constants/api';
 /* date format */
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';

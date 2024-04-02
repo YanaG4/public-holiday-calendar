@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import { useCountry } from '../CountryContext';
+import { useCountry } from '../../CountryContext';
 import isEmail from 'validator/lib/isEmail';
-import { SEND_SUBSCRIPTION_ENDPOINT } from '../constants/api';
+import { SEND_SUBSCRIPTION_ENDPOINT } from '../../constants/api';
 
 import './AlertsContainer.css';
 

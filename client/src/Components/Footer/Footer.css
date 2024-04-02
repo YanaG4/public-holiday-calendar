@@ -10,7 +10,7 @@
     max-width: 100%;
     width: 100vw;
     min-height: 600px;
-    background-image : url(".././img/footer.svg");
+    background-image : url("../../img/footer.svg");
     /* background-repeat: repeat-x;    */
     background-position: center;
     display: flex;
