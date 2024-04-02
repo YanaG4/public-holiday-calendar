@@ -14,7 +14,5 @@ export const countryNameToColour = (countryName) => {
 
 export const getCountriesWithColors = (countryList) => {
     if(!Array.isArray(countryList)) return []
-    return countryList.map(country => {
-        country.color = countryNameToColour(country.commonName)
-        return country })
-    }
+    return countryList.map(country => ({...country, color: countryNameToColour(country.commonName)}));
+}

@@ -1,6 +1,11 @@
+export const generatePlusMinusNumber = (num = 10) => {
+    const different = num * 2 + 1;
+    return Math.floor(Math.random() * different) - num;
+}
+
 export function getRandomDate() {
     const currentDate = new Date();
-    const plusMinus10Days = Math.floor(Math.random() * 21) - 10; // some random number between -10 and 10
+    const plusMinus10Days = generatePlusMinusNumber(); // some random number between -10 and 10
 
     const randomizedDate = new Date(currentDate.setDate(currentDate.getDate() + plusMinus10Days));
 
