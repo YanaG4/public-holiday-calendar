@@ -21,6 +21,7 @@
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "jest",
+    "test-coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
