@@ -291,6 +291,15 @@ export const holidays = [
     },
     {
         holidayId: 0,
+        name: "And one more New Year!!!",
+        date: new Date(Date.now()),
+        provider: {},
+        countryCode: "EE",
+        regional: false,
+        regions: "string"
+    },
+    {
+        holidayId: 0,
         name: "New Year!!!",
         date: randomHoliday(),
         provider: {},

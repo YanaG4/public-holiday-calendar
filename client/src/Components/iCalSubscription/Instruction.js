@@ -24,9 +24,9 @@ function Instruction() {
     return (
         <section className='instruction-main-container'>
             <div className='button-container'>
-                <button onClick={changeOutlookVersion}>
+                <button data-testid='mainMailClientButton' onClick={changeOutlookVersion}>
                     <img src={outlookVesrion === MAIL_CLIENTS.OFFICE365 ? Outlook365Image : Outlook2013Image} alt="Mail icon." />{outlookVesrion}</button>
-                <button onClick={changeOutlookVersion}>{outlookVesrion === MAIL_CLIENTS.OFFICE365 ? MAIL_CLIENTS.OUTLOOK2013 : MAIL_CLIENTS.OFFICE365}</button>
+                <button data-testid='secondaryMailClientButton' onClick={changeOutlookVersion}>{outlookVesrion === MAIL_CLIENTS.OFFICE365 ? MAIL_CLIENTS.OUTLOOK2013 : MAIL_CLIENTS.OFFICE365}</button>
             </div>
             <div className='instruction-container'>
                 <div className='text-header'>

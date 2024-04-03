@@ -3,7 +3,7 @@ import './Instruction.css'
 
 export default function Office365() {
     return (
-        <table>
+        <table data-testid='office365'>
             <tbody>
                 <tr>
                     <td><p>1</p></td>

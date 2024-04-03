@@ -23,14 +23,14 @@ export default function CountryInput() {
         axios.get(GET_COUNTRIES_ENDPOINT)
             .then((response) => {
                 const countryList = response.data;
-                reqStatus = response.status
+                reqStatus = response.status;
                 countriesWithColors = getCountriesWithColors(countryList)})
             .catch(error => {
                 console.log(error.message)});
 
-        if (reqStatus < 200 || reqStatus >= 300) //if real data isn't available - use hardcoded data
+        if (reqStatus < 200 || reqStatus >= 300 || !reqStatus) //if real data isn't available - use hardcoded data
             countriesWithColors = getCountriesWithColors(countries);
-        
+
         if (active)
             setAllCountries(countriesWithColors);
     
@@ -41,7 +41,7 @@ export default function CountryInput() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Autocomplete className='country-input'
+            <Autocomplete data-testid='countryAutocomplete' className='country-input'
                 multiple
                 limitTags={6}
                 id="tags-filled"
@@ -54,7 +54,7 @@ export default function CountryInput() {
                 filterSelectedOptions
                 getOptionLabel={(option) => option.commonName || ""}
                 renderOption={(props, option) => (
-                    <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                    <Box data-testid='coutryOption' component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                         <img
                             loading="lazy"
                             width="20"
@@ -68,6 +68,7 @@ export default function CountryInput() {
                 renderTags={(value, getTagProps) =>
                     value.map((option, index) => (
                         <Chip
+                            data-testid='chosenCountry'
                             label={option.commonName}
                             style={{
                                 backgroundColor: option.color,
@@ -78,6 +79,7 @@ export default function CountryInput() {
                 ))}
                 renderInput={(params) => (
                     <TextField
+                        data-testid="searchField"
                         autoFocus
                         {...params}
                         placeholder="Choose a country"

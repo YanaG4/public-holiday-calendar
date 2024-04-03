@@ -81,7 +81,7 @@ describe('calendarEvent', () => {
             regions: "string"
         }]
         const newEvents = getHardcodedEvents(countries);
-        expect(newEvents).toHaveLength(2);
+        expect(newEvents).toHaveLength(3);
         expect(newEvents[0].countryCode).toBe(expectedEvents[0].countryCode);
         expect(newEvents[1].countryCode).toBe(expectedEvents[1].countryCode);
         expect(newEvents[0].name).toBe(expectedEvents[0].name);

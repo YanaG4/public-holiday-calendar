@@ -1,7 +1,7 @@
 import { holidays } from '../stores/Holidays';
 
 export const getCalendarFormattedEvent = (chosenHolidays, countries) => {
-    const formattedEvents = new Set(chosenHolidays.map(event => {
+    const formattedEvents = new Set(chosenHolidays?.map(event => {
         const country = countries.find(country => country?.isoAlpha2Code === event?.countryCode);
         if (!country) return null;
         const newEvent = {};

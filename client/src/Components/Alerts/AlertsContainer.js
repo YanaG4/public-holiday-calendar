@@ -13,7 +13,7 @@ const BUTTON_CLASSNAME = {
     NORMAL: "main-button",
 }
 
-const WARNING_MESSAGE = {
+export const WARNING_MESSAGE = {
     EMAIL_FIELD_IS_EMPTY: 'Please enter an email',
     EMAIL_IS_INVALID: 'Please enter a valid email',
     NO_COUNTRY_SELECTED: 'Please select the countries',
@@ -80,6 +80,7 @@ export default function AlertsContainer() {
             console.log(status);
             return status;
         } catch (error) {
+            console.log(error);
             console.log(error.response);
             console.log(error.response?.status);
             return error.response?.status || 504;
@@ -107,9 +108,9 @@ export default function AlertsContainer() {
             <h2 className='small-container-header'><i className="fa fa-bell"></i>Subscribe to Alerts</h2>
             <div className='small-container-input'>
                 <input type="text" placeholder="Enter your E-mail" ref={emailInput} disabled={isDisabled} />
-                <div className='warning-text error-text'>{errorMessage}</div>
+                <div data-testid='subscribeErrorLabel' className='warning-text error-text'>{errorMessage}</div>
             </div>
-            <button className='main-button' onClick={(e) => subscribeHandler(e.target)} disabled={isDisabled}></button>
+            <button data-testid='subscribeButton' className='main-button' onClick={(e) => subscribeHandler(e.target)} disabled={isDisabled}></button>
         </div>
     )
 }

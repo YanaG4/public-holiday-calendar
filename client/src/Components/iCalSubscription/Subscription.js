@@ -4,7 +4,7 @@ import { SUBCRIPTION_ENDPOINT } from '../../constants/api'
 
 import './Subscription.css'
 
-const LINK_WARNINGS = {
+export const LINK_WARNINGS = {
     NO_COUNTRY_TEXT: "Choose countries to get the subscription link",
     NOT_ENOUGH_COUNTRIES_TEXT: "Choose more than one country to get separate links"
 }
@@ -13,9 +13,10 @@ export default function Subscription() {
     const [singleLink, setSingleLink] = useState(null)
     const [separateLinks, setSeparateLinks] = useState([])
     const countries = useCountry()
+    console.log(countries);
     
     const setSubscriptionLinks = useCallback(() => { 
-        if (!countries.length) {
+        if (!countries?.length) {
             setSingleLink(LINK_WARNINGS.NO_COUNTRY_TEXT);
             setSeparateLinks([LINK_WARNINGS.NO_COUNTRY_TEXT]);
             return;
@@ -31,9 +32,9 @@ export default function Subscription() {
             ? [LINK_WARNINGS.NOT_ENOUGH_COUNTRIES_TEXT] 
             : newSeparateLinks);
     }, [countries])
-    useEffect(() => {
+   useEffect(() => {
         setSubscriptionLinks()
-    }, [setSubscriptionLinks])
+   }, [setSubscriptionLinks])
 
     
     return (
@@ -45,12 +46,12 @@ export default function Subscription() {
             </div>
             <div className='links-container'>
                 <p>Subscribe to the public holidays feed on your Outlook Calendar with this link:</p>
-                <div className={(countries.length < 1) ? 'link-container link-container-inactive' : 'link-container'}>{singleLink}</div>
+                <div className={(countries?.length < 1 || !countries?.length) ? 'link-container link-container-inactive' : 'link-container'}>{singleLink}</div>
                 <p>Or you can add them separately*</p>
-                <div className={(countries.length <= 1) ? 'link-container link-container-inactive' : 'link-container'}>
+                <div data-testid='multipleLinks' className={(countries?.length <= 1 || !countries?.length) ? 'link-container link-container-inactive' : 'link-container'}>
                     {
                         separateLinks.map((link) => (
-                            <li key={link}>{link}</li>
+                            <li key={link} data-testid='links'>{link}</li>
                         ))}
                 </div>
                 <p className='warning-text'>* Adding them separately means that you can toggle them on and off individually.</p>

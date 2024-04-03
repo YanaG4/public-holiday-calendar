@@ -39,30 +39,19 @@ function MyCalendar() {
             return;
         }
 
-        let active = true;
-        let chosenHolidays = undefined;
-        let reqStatus = null;
         let countryCodes = getCountryCodes(countries);
 
         axios.get(`${GET_HOLIDAYS_ENDPOINT}?countries=${countryCodes}`)
             .then((response) => {
-                const holidayList = response.data;
-                reqStatus = response.status;
-                chosenHolidays = holidayList;})
+                if (response.status >= 200 && response.status < 300) {
+                    saveEventsForCalendar(response.data);
+                } else {
+                    saveEventsForCalendar(getHardcodedEvents(countries));
+                }})
             .catch(error => {
-                console.log(error.message)
+                console.log(error.message);
+                saveEventsForCalendar(getHardcodedEvents(countries)); //if real data isn't available - use hardcoded data
                 return });
-
-        if (reqStatus < 200 || reqStatus >= 300) { //if real data isn't available - use hardcoded data
-            chosenHolidays = getHardcodedEvents(countries);
-        }
-
-        if (active)
-            saveEventsForCalendar(chosenHolidays);
-
-        return () => {
-            active = false;
-        }
     }, [countries, saveEventsForCalendar])
 
 
