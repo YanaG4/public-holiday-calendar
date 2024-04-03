@@ -3,7 +3,7 @@ import AlertsContainer from './Components/Alerts/AlertsContainer';
 import Calendar from './Components/Calendar/Calendar';
 import CountryContainer from './Components/CountryInput/CountryContainer';
 import Footer from './Components/Footer/Footer';
-import Header from './Components/Hedaer/Header';
+import Header from './Components/Header/Header';
 import SubscriptionContainer from './Components/iCalSubscription/SubscriptionContainer'
 import { CountryProvider } from './CountryContext';
 
