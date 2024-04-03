@@ -44,6 +44,8 @@
   "devDependencies": {
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
+    "@testing-library/react": "^14.2.2",
+    "@testing-library/user-event": "^14.5.2",
     "babel-jest": "^29.7.0",
     "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
