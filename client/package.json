@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "http://sinxenon.github.io/public-holiday-calendar",
+  "homepage": "http://yanag4.github.io/public-holiday-calendar",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
