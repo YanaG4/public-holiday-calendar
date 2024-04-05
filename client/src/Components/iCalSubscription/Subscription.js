@@ -45,7 +45,7 @@ export default function Subscription() {
             </div>
             <div className='links-container'>
                 <p>Subscribe to the public holidays feed on your Outlook Calendar with this link:</p>
-                <div className={(countries?.length < 1 || !countries?.length) ? 'link-container link-container-inactive' : 'link-container'}>{singleLink}</div>
+                <div data-testid='singleLink' className={(countries?.length < 1 || !countries?.length) ? 'link-container link-container-inactive' : 'link-container'}>{singleLink}</div>
                 <p>Or you can add them separately*</p>
                 <div data-testid='multipleLinks' className={(countries?.length <= 1 || !countries?.length) ? 'link-container link-container-inactive' : 'link-container'}>
                     {
