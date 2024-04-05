@@ -2,13 +2,13 @@
 
 ## Demo
 
-https://sinxenon.github.io/public-holiday-calendar/
+https://yanag4.github.io/public-holiday-calendar/
 
 ### To see changes on calendar: 
 
-- To see the hardcoded data go to the September 2022 on the calendar
-- Choose some countries (e.g. France, Estonia, Germany - they have some hardcoded events)
-- The "New Year" events appear on the calendar ( September 2022 )
+- Choose some countries (e.g. <b>France, Estonia, Germany, Finland - they have some hardcoded events</b>)
+- The "New Year" events appear on the calendar
+- If you don't see them, click <b>'back' and 'next' on the Calendar</b>. They will be randomly placed somewhere around the current date, which includes the next and the previous months.
 
 Also check "How to use" section down below.
 
@@ -62,6 +62,14 @@ For the frontend run see the section: <b>How to run (for a frontend demo)</b> do
 - MUI
 - Figma
 - REST
+
+## Testing
+
+- Jest
+- RTL
+- axios-mock-adapter
+
+## Other Tech Stack
 
 - Create-react-app
 - Local Storage
