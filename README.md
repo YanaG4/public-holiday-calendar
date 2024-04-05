@@ -1,4 +1,4 @@
-# Public Holiday Calendar
+# Public Holiday Calendar [![codecov](https://codecov.io/gh/YanaG4/public-holiday-calendar/graph/badge.svg?token=QJOE28PS84)](https://codecov.io/gh/YanaG4/public-holiday-calendar)
 
 ## Demo
 
@@ -63,11 +63,12 @@ For the frontend run see the section: <b>How to run (for a frontend demo)</b> do
 - Figma
 - REST
 
-## Testing
+## Testing [![codecov](https://codecov.io/gh/YanaG4/public-holiday-calendar/graph/badge.svg?token=QJOE28PS84)](https://codecov.io/gh/YanaG4/public-holiday-calendar)
 
 - Jest
 - RTL
 - axios-mock-adapter
+- Codecov
 
 ## Other Tech Stack
 
