@@ -1,28 +1,28 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react";
 
-const CountryContext = React.createContext()
-const CountryUpdateContext = React.createContext()
+const CountryContext = React.createContext();
+const CountryUpdateContext = React.createContext();
 
 export function useCountry() {
-    return useContext(CountryContext)
+    return useContext(CountryContext);
 }
 
 export function useCountryUpdate() {
-    return useContext(CountryUpdateContext)
+    return useContext(CountryUpdateContext);
 }
 
 export function CountryProvider({ children }) {
     const [chosenCountries, setChosenCountries] = useState(() => {
-        const savedCountries = JSON.parse(localStorage.getItem('chosenCountries'))
-        return savedCountries || []
+        const savedCountries = JSON.parse(localStorage.getItem('chosenCountries'));
+        return savedCountries || [];
     })
 
     useEffect(() => {
-        localStorage.setItem("chosenCountries", JSON.stringify(chosenCountries))
+        localStorage.setItem("chosenCountries", JSON.stringify(chosenCountries));
     }, [chosenCountries])
 
     function setCountriesHandler(countries) {
-        setChosenCountries(countries)
+        setChosenCountries(countries);
     }
 
     return (

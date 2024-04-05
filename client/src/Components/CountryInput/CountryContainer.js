@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import CountryInput from './CountryInput';
 
-import './CountryContainer.css'
+import './CountryContainer.css';
 
 export default function CountryContainer({ setCountries }) {
     return (

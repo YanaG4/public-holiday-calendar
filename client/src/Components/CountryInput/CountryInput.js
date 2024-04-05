@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, TextField, Autocomplete, Chip } from '@mui/material';
-import { countries } from '../../stores/Countries' //hardcoded data
+import { countries } from '../../stores/Countries'; //hardcoded data
 import { getCountriesWithColors } from '../../utils/colorPicker';
-import { useCountry, useCountryUpdate } from '../../CountryContext'
+import { useCountry, useCountryUpdate } from '../../CountryContext';
 import { GET_COUNTRIES_ENDPOINT } from '../../constants/api'
 
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from '../../theme/MUItheme';
-import './CountryContainer.css'
+import './CountryContainer.css';
 
 export default function CountryInput() {
-    const [allCountries, setAllCountries] = useState([])
-    const chosenCountries = useCountry()
-    const setCountries = useCountryUpdate()
+    const [allCountries, setAllCountries] = useState([]);
+    const chosenCountries = useCountry();
+    const setCountries = useCountryUpdate();
 
     useEffect(() => {
         let reqStatus = null;
         let active = true;
-        let countriesWithColors = []
+        let countriesWithColors = [];
         
         axios.get(GET_COUNTRIES_ENDPOINT)
             .then((response) => {

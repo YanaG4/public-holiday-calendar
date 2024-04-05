@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import { useCountry } from '../../CountryContext'
-import { SUBCRIPTION_ENDPOINT } from '../../constants/api'
+import React, { useEffect, useState, useCallback } from 'react';
+import { useCountry } from '../../CountryContext';
+import { SUBCRIPTION_ENDPOINT } from '../../constants/api';
 
-import './Subscription.css'
+import './Subscription.css';
 
 export const LINK_WARNINGS = {
     NO_COUNTRY_TEXT: "Choose countries to get the subscription link",
@@ -10,10 +10,9 @@ export const LINK_WARNINGS = {
 }
 
 export default function Subscription() {
-    const [singleLink, setSingleLink] = useState(null)
-    const [separateLinks, setSeparateLinks] = useState([])
-    const countries = useCountry()
-    console.log(countries);
+    const [singleLink, setSingleLink] = useState(null);
+    const [separateLinks, setSeparateLinks] = useState([]);
+    const countries = useCountry();
     
     const setSubscriptionLinks = useCallback(() => { 
         if (!countries?.length) {
@@ -33,7 +32,7 @@ export default function Subscription() {
             : newSeparateLinks);
     }, [countries])
    useEffect(() => {
-        setSubscriptionLinks()
+        setSubscriptionLinks();
    }, [setSubscriptionLinks])
 
     

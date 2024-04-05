@@ -1,5 +1,5 @@
-import React from 'react'
-import './Instruction.css'
+import React from 'react';
+import './Instruction.css';
 
 export default function Office365() {
     return (

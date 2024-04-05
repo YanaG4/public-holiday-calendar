@@ -1,10 +1,10 @@
-import React, { memo, useState } from 'react'
-import Office365 from './Office365'
-import Outlook2013 from './Outlook2013'
-import Outlook365Image from '../../img/outlook365.png'
-import Outlook2013Image from '../../img/outlook2013.png'
+import React, { memo, useState } from 'react';
+import Office365 from './Office365';
+import Outlook2013 from './Outlook2013';
+import Outlook365Image from '../../img/outlook365.png';
+import Outlook2013Image from '../../img/outlook2013.png';
 
-import './Instruction.css'
+import './Instruction.css';
 
 const MAIL_CLIENTS = {
     OFFICE365: 'Office 365',
@@ -12,13 +12,13 @@ const MAIL_CLIENTS = {
 }
 
 function Instruction() {
-    const [outlookVesrion, setOutlookVersion] = useState(MAIL_CLIENTS.OFFICE365)
+    const [outlookVesrion, setOutlookVersion] = useState(MAIL_CLIENTS.OFFICE365);
 
     function changeOutlookVersion() {
         if (outlookVesrion === MAIL_CLIENTS.OFFICE365)
-            setOutlookVersion(MAIL_CLIENTS.OUTLOOK2013)
+            setOutlookVersion(MAIL_CLIENTS.OUTLOOK2013);
         else
-            setOutlookVersion(MAIL_CLIENTS.OFFICE365)
+            setOutlookVersion(MAIL_CLIENTS.OFFICE365);
     }
     
     return (

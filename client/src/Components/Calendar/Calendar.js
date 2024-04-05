@@ -54,8 +54,6 @@ function MyCalendar() {
                 return });
     }, [countries, saveEventsForCalendar])
 
-
-
     return (
         <div className='calendar-container'>
             <Calendar

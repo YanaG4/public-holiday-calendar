@@ -34,7 +34,7 @@ export const getHardcodedEvents = (countries) => {
         countries.forEach(country => {
             const events = holidays.filter(holiday => holiday?.countryCode === country?.isoAlpha2Code);
             if (events.length)
-                filteredEvents = [...filteredEvents, ...events]
+                filteredEvents = [...filteredEvents, ...events];
         });
         if (filteredEvents.length === 0) {
             return [];

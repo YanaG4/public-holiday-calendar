@@ -1,4 +1,4 @@
-import { colors } from '../stores/Colors'
+import { colors } from '../stores/Colors';
 
 export const countryNameToColour = (countryName) => {
     let hash = 0;
@@ -13,6 +13,6 @@ export const countryNameToColour = (countryName) => {
 }
 
 export const getCountriesWithColors = (countryList) => {
-    if(!Array.isArray(countryList)) return []
+    if(!Array.isArray(countryList)) return [];
     return countryList.map(country => ({...country, color: countryNameToColour(country.commonName)}));
 }
