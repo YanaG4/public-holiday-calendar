@@ -10,5 +10,7 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',
     '\\.(png|svg)$': '<rootDir>/__mocks__/assetMock.js',
   },
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'] 
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  collectCoverage: true,
+  coverageReporters: ['text', 'cobertura'],
 };
