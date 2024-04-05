@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/public-holiday-calendar/static/css/main.8cfb56d6.css",
-    "main.js": "/public-holiday-calendar/static/js/main.abe7e9d9.js",
+    "main.css": "/public-holiday-calendar/static/css/main.34c1dbb1.css",
+    "main.js": "/public-holiday-calendar/static/js/main.e5149b6e.js",
     "static/media/background-image.jpg": "/public-holiday-calendar/static/media/background-image.2ee04fae56c1b638af26.jpg",
     "static/media/3.png": "/public-holiday-calendar/static/media/3.487487e990ebc2a1c220.png",
     "static/media/1.png": "/public-holiday-calendar/static/media/1.8f64d622b45a493c487b.png",
@@ -13,11 +13,11 @@
     "static/media/5.png": "/public-holiday-calendar/static/media/5.a2bd4c6f6325403ac622.png",
     "index.html": "/public-holiday-calendar/index.html",
     "static/media/footer.svg": "/public-holiday-calendar/static/media/footer.90db221fe67d3d62368d.svg",
-    "main.8cfb56d6.css.map": "/public-holiday-calendar/static/css/main.8cfb56d6.css.map",
-    "main.abe7e9d9.js.map": "/public-holiday-calendar/static/js/main.abe7e9d9.js.map"
+    "main.34c1dbb1.css.map": "/public-holiday-calendar/static/css/main.34c1dbb1.css.map",
+    "main.e5149b6e.js.map": "/public-holiday-calendar/static/js/main.e5149b6e.js.map"
   },
   "entrypoints": [
-    "static/css/main.8cfb56d6.css",
-    "static/js/main.abe7e9d9.js"
+    "static/css/main.34c1dbb1.css",
+    "static/js/main.e5149b6e.js"
   ]
 }
