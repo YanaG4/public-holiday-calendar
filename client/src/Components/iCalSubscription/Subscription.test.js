@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Subscription from './Subscription';
-import { LINK_WARNINGS } from './Subscription';
+import { LINK_WARNINGS } from '../../constants/values';
 import { useCountry } from '../../CountryContext';
 import { SUBCRIPTION_ENDPOINT } from '../../constants/api';
 

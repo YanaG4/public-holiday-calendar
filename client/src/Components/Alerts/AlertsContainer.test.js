@@ -2,7 +2,7 @@ import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import AlertsContainer from './AlertsContainer';
-import { WARNING_MESSAGE } from './AlertsContainer';
+import { WARNING_MESSAGE } from '../../constants/values';
 import { useCountry } from '../../CountryContext';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';

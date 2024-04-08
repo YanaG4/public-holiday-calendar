@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useCountry } from '../../CountryContext';
 import isEmail from 'validator/lib/isEmail';
 import { SEND_SUBSCRIPTION_ENDPOINT } from '../../constants/api';
+import { WARNING_MESSAGE } from '../../constants/values';
 
 import './AlertsContainer.css';
 
@@ -11,14 +12,6 @@ const BUTTON_CLASSNAME = {
     ERROR: "main-button-error",
     AWAIT: "main-button-await",
     NORMAL: "main-button",
-}
-
-export const WARNING_MESSAGE = {
-    EMAIL_FIELD_IS_EMPTY: 'Please enter an email',
-    EMAIL_IS_INVALID: 'Please enter a valid email',
-    NO_COUNTRY_SELECTED: 'Please select the countries',
-    SERVER_ERROR: "Server doesn't respond. Please try later",
-    SUBSCRIPTION_ERROR: "Can't create a subscription for this e-mail",
 }
 
 export default function AlertsContainer() {

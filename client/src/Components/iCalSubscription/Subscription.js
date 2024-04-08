@@ -1,13 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useCountry } from '../../CountryContext';
 import { SUBCRIPTION_ENDPOINT } from '../../constants/api';
+import { LINK_WARNINGS } from '../../constants/values';
 
 import './Subscription.css';
-
-export const LINK_WARNINGS = {
-    NO_COUNTRY_TEXT: "Choose countries to get the subscription link",
-    NOT_ENOUGH_COUNTRIES_TEXT: "Choose more than one country to get separate links"
-}
 
 export default function Subscription() {
     const [singleLink, setSingleLink] = useState(null);
